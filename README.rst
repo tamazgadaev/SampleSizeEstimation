@@ -10,3 +10,11 @@ Description
 ===========
 
 This repository contains computation experiment to the article: *Numerical methods of minimum sufficient sample size estimation for linear and logistic regression*.
+
+Depending On Available Sample Size Experiment
+---------------------------------------------
+This part of computation experiment shows how different models depends on available sample size.
+
+Many Datasets Experiment
+------------------------
+This part of computation experiment shows how different models works on different datasets.
