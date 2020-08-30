@@ -13,14 +13,14 @@ This repository contains computation experiment to the article: *Numerical metho
 
 Depending On Available Sample Size Experiment
 ---------------------------------------------
-This part of computation experiment shows how different models depends on available sample size.
+This part of computation experiment shows how different models depends on available sample size. We are using Boston Housing dataset for illustration. The dataset is available through the `link <https://github.com/ttgadaev/SampleSizeEstimation/blob/master/datasets/boston.csv>`_.
 
 .. image:: dumps/DependingOnAvailableSampleSizeExperiment/figure.png
    :width: 600
 
 Many Datasets Experiment
 ------------------------
-This part of computation experiment shows how different models works on different datasets.
+This part of computation experiment shows how different models works on different datasets. We are using different public available datasets. A description of all datasets is available through the `link <https://github.com/ttgadaev/SampleSizeEstimation/blob/master/datasets>`_.
 
 +-------------------------+---------------+---------------+---------------+---------------+---------------+
 |                         |      Boston m*|    Diabetes m*| ForestFires m*|       Servo m*|         NBA m*|
