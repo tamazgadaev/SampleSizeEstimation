@@ -64,7 +64,7 @@ This paper investigates the problem of cost reduction of data collection procedu
 \maketitle
 
 \section{Introduction}
-The design of experiment requires to estimate the minimum sample size: the quantity of the performed feature set measurements which are required to build the formulated conditions. The choice of the sample size estimation method depends on the problem being solved which determines the formulation of the statistical hypothesis and statistics to check it. Table~\ref{table1} presents ten sample size estimation methods. It includes both classical and Bayesian methods of the sample size estimation.
+The design of experiment requires to estimate the minimum sample size: the quantity of the performed feature set measurements which are required to build the formulated conditions. The choice of the sample size estimation method depends on the problem being solved which determines the formulation of the statistical hypothesis and statistics to check it. Table~\ref{table1} presents ten methods for sample size~$m^*$ estimation. It includes both classical and Bayesian methods of the sample size estimation.
 
 The classical methods assume that the sample corresponds to some prior conditions formulated earlier. These conditions are formulated as a statistical criterion~(Self et al. 1988, 1992; Shieh 2000; Demidenko 2007). The sample size estimation method related to this criterion guarantees that the fixed statistical power $1-\beta$ with the extent of the first kind error which does not exceed the set value $\alpha$ will be approached. This sample size is called sufficient.
 
@@ -169,36 +169,37 @@ Given a sample set of size $m$:
 	\mathfrak{D}_{m} = \{\textbf{x}_i, y_i\}_{i = 1}^{m}
 \end{aligned}
 \end{equation}
-where $\textbf{x}_i\in \mathbb{R}^{n}$, $y_i\in \mathbb{Y}$. Feature vector $\textbf{x} = [\textbf{u}, \textbf{v}]$ concatenates $\textbf{u}_i\in \mathbb{R}^{k}$ and $~\textbf{v}_i\in \mathbb{R}^{n-k}$.
-The sample set $\mathfrak{D}_{m}$ randomly splits into train and test parts
-\begin{equation}
-\label{eq:ps:2}
-\begin{aligned}
-	\mathfrak{D}_{\mathcal{T}_{m}} = \{\textbf{x}_i, \textbf{y}_i\}_{i \in \mathcal{T}_{m}}, \quad \mathfrak{D}_{\mathcal{L}_{m}} = \{\textbf{x}_i, \textbf{y}_i\}_{i \in \mathcal{L}_{m}}, \quad  \mathcal{T}_{m}\sqcup\mathcal{L}_{m} = \{1, ..., m\}.
-\end{aligned}
-\end{equation}
+where $\textbf{x}_i\in \mathbb{R}^{n}$, $y_i\in \mathbb{Y}$. The set~$\mathbb{Y}$ is equal to~$\mathbb{R}$ for the regression task and~$\mathbb{Y}=\{1,\cdots K\}$ for the classification on~$K$ classes task. Feature vector $\textbf{x} = [\textbf{u}, \textbf{v}]$ concatenates $\textbf{u}_i\in \mathbb{R}^{k}$ and $~\textbf{v}_i\in \mathbb{R}^{n-k}$.
+%The sample set $\mathfrak{D}_{m}$ randomly splits into train and test parts
+%\begin{equation}
+%\label{eq:ps:2}
+%\begin{aligned}
+%	\mathfrak{D}_{\mathcal{T}_{m}} = \{\textbf{x}_i, \textbf{y}_i\}_{i \in \mathcal{T}_{m}}, \quad \mathfrak{D}_{\mathcal{L}_{m}} = \{\textbf{x}_i, \textbf{y}_i\}_{i \in \mathcal{L}_{m}}, \quad  \mathcal{T}_{m}\sqcup\mathcal{L}_{m} = \{1, ..., m\}.
+%\end{aligned}
+%\end{equation}
 Let introduce a parametric family of functions for unknown distribution approximation $p(y|\textbf{x}, \mathfrak{D}_{\mathcal{L}_{m}})$:
 \begin{equation}
 \label{eq:ps:3}
 \begin{aligned}
-	\mathfrak{F} = \left\{f\left(y,\textbf{x}, \textbf{w}\right)|\textbf{w}\in\mathbb{W},~\int_{y\in \mathbb{Y}, \textbf{x}\in\mathbb{R}^{n}}f\left(y, \textbf{x}, \textbf{w}\right)dyd\textbf{x}=1\right\}.
+	\mathfrak{F} = \left\{f\left(y,\textbf{x}, \textbf{w}\right)|\textbf{w}\in\mathbb{W},~\int_{y\in \mathbb{Y}, \textbf{x}\in\mathbb{R}^{n}}f\left(y, \textbf{x}, \textbf{w}\right)dyd\textbf{x}=1\right\},
 \end{aligned}
 \end{equation}
+where~$\mathbb{W} = \mathbb{R}^{n^*}$ is a space of model parameters, $n^*\geq n$ is a number of model parameters. For the linear model~$n^*=n$.
 
-For the model $f$ with the parameters vector $\textbf{w}$ define the likelihood function and logarithmic likelihood function of the sample set $\mathfrak{D}$:
+For the model $f$ with the parameters vector $\textbf{w}$ define the likelihood function and logarithmic likelihood function of the sample set $\mathfrak{D}_{m}$:
 \begin{equation}
 \label{eq:ps:4}
 \begin{aligned}
-	L\left(\mathfrak{D}, \textbf{w}\right) = \prod f\left(y,\textbf{x}, \textbf{w}\right),\quad l\left(\mathfrak{D}, \textbf{w}\right) = \sum \log f\left(y,\textbf{x}, \textbf{w}\right),
+	L\left(\mathfrak{D}_{m}, \textbf{w}\right) = \prod_{i=1}^{m} f\left(y_{i},\textbf{x}_{i}, \textbf{w}\right),\quad l\left(\mathfrak{D}_{m}, \textbf{w}\right) = \sum_{i=1}^{m} \log f\left(y_i,\textbf{x}_{i}, \textbf{w}\right),
 \end{aligned}
 \end{equation}
 
-where $f(y,\textbf{x}, \textbf{w})$ is the likelihood of the sample set $\mathfrak{D}_{\mathcal{L}}$ with given vector of parameters $\textbf{w}$.
+where $f(y,\textbf{x}, \textbf{w})$ is the likelihood of the sample set $\mathfrak{D}_{m}$ with given vector of parameters $\textbf{w}$.
 Use maximum likelihood principle to estimate parameters $\textbf{w}$
 \begin{equation}
 \label{eq:ps:5}
 \begin{aligned}
-	\hat{\textbf{w}} = \argmax_{\textbf{w}\in\mathbb{W}}L\left(\mathfrak{D}_{\mathcal{L}}, \textbf{w}\right).
+	\hat{\textbf{w}} = \argmax_{\textbf{w}\in\mathbb{W}}L\left(\mathfrak{D}_{m}, \textbf{w}\right).
 \end{aligned}
 \end{equation}
 
@@ -206,7 +207,7 @@ The Fisher information matrix has the form:
 \begin{equation}
 \label{eq:ps:6}
 \begin{aligned}
-	\textbf{I}\left(\mathfrak{D}, \textbf{w}\right) = -\nabla\nabla^{\mathsf{T}}l\left(\mathfrak{D}, \textbf{w}\right), \quad  \textbf{V} = \textbf{I}^{-1}\left(\mathfrak{D}, \textbf{m}\right),
+	\textbf{I}\left(\mathfrak{D}_{m}, \textbf{w}\right) = -\nabla\nabla^{\mathsf{T}}l\left(\mathfrak{D}_{m}, \textbf{w}\right), \quad  \textbf{V} = \textbf{I}^{-1}\left(\mathfrak{D}_{m}, \textbf{m}\right),
 \end{aligned}
 \end{equation}
 statistic-based methods and Bayesian methods use the Fisher information matrix to estimation the sample size.
@@ -219,12 +220,12 @@ Let the likelihood has the following form:
 \begin{equation}
 \label{eq:sb:1}
 \begin{aligned}
-	p(y|\textbf{u},\textbf{v},\textbf{w}_{u},\textbf{w}_{v}) = \exp\bigl(y\theta- b(\theta) + c\left(y\right)\bigr),
+	p(y|\mathbf{x}, \mathbf{w}) = \exp\bigl(y\theta- b(\theta) + c\left(y\right)\bigr),
 \end{aligned}
 \end{equation}
-where $\theta$ is a parameters of distribution, and it calculates by using link function $\theta=\theta\bigr(\textbf{u},\textbf{v},\textbf{w}_{u},\textbf{w}_{v}\bigr)$.
+where $\theta$ is a parameters of distribution, and it calculates by using link function $\theta=\theta\bigr(\mathbf{x}, \mathbf{w}\bigr).$
 
-Test the hypothesis
+Consider the linear regression task. Test the hypothesis
 \begin{equation}
 \label{eq:sb:2}
 \begin{aligned}
