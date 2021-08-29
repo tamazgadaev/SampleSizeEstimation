@@ -42,7 +42,7 @@
 \newtheorem{theorem}{Theorem}
 \newtheorem{corollary}{Corollary}
 \newtheorem{lemma}{Lemma}
-%%%%%%% для caption2 %%%%%%%%
+%%%%%%% Г¤Г«Гї caption2 %%%%%%%%
 \setcaptionwidth{\linewidth}
 \renewcommand{\captionlabeldelim}{.~}
 \renewcommand{\captionlabelfont}{\bfseries}
@@ -50,7 +50,7 @@
 \renewcommand \thefigure{\@arabic\c@figure}
 \renewcommand \thetable{\@arabic\c@table}
 \renewcommand{\arraystretch}{1.5}
-\setlength{\extrarowheight}{2pt}
+\setlength{\extrarowheight}{2pt}\usepackage{ljm}
 \setlength{\extratabsurround}{2pt}
 
 \renewcommand{\topfraction}{.90}
@@ -472,7 +472,7 @@
 %!
 %% Collaboration
 \@ifempty\@firstcollaboration{}{{\vspace*{6pt}\normalfont\large\@firstcollaboration}\par\smallskip}
-%% Вставляем адрес организации представившей статью
+%% Г‚Г±ГІГ ГўГ«ГїГҐГ¬ Г Г¤Г°ГҐГ± Г®Г°ГЈГ Г­ГЁГ§Г Г¶ГЁГЁ ГЇГ°ГҐГ¤Г±ГІГ ГўГЁГўГёГҐГ© Г±ГІГ ГІГјГѕ
 \@ifempty\@firstaffiliation{}{\normalfont\small\itshape\@firstaffiliation\par}
 \let\AFF@opr \@affil@script
 \noindent\parbox{\textwidth}{\@AFF@list}{}
