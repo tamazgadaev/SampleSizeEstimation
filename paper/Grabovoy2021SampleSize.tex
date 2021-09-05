@@ -195,14 +195,14 @@ In this paper, it is assumed that the vector \textbf{w} is a random vector from 
 \[
 \label{eq:ps:5'}
 \begin{aligned}
-    \textbf{w} \sim N\bigr(\hat{\textbf{w}}, \mathbf{V}\bigr),
+    \textbf{w} \sim \mathcal{N}\bigr(\hat{\textbf{w}}, \mathbf{V}\bigr),
 \end{aligned}
 \]
 where matrix~$\mathbf{V}$ is given by using Fisher information matrix. The Fisher information matrix has the form:
 \[
 \label{eq:ps:6}
 \begin{aligned}
-	\textbf{I}\left(\mathfrak{D}_{m}, \textbf{w}\right) = -\nabla\nabla^{\mathsf{T}}l\left(\mathfrak{D}_{m}, \textbf{w}\right), \quad  \textbf{V} = \textbf{I}^{-1}\left(\mathfrak{D}_{m}, \textbf{m}\right),
+	\textbf{I}\left(\mathfrak{D}_{m}, \textbf{w}\right) = -\frac{\partial^2}{\partial \textbf{w}^{2}}l\left(\mathfrak{D}_{m}, \textbf{w}\right), \quad  \textbf{V} = \textbf{I}^{-1}\left(\mathfrak{D}_{m}, \textbf{w}\right),
 \end{aligned}
 \]
 statistic-based methods and Bayesian methods use the Fisher information matrix to estimation the sample size.
@@ -218,9 +218,7 @@ Let the likelihood has the following form:
 	p(y|\mathbf{x}, \mathbf{w}) = \exp\bigl(y\theta- b(\theta) + c\left(y\right)\bigr),
 \end{aligned}
 \]
-where $\theta$ is a parameters of distribution, and it calculates by using link function $\theta=\theta\bigr(\mathbf{x}, \mathbf{w}\bigr),$ and functions~$b, c$ are some given function.
-
-Consider the linear regression task. Test the hypothesis
+where $\theta$ is a parameters of distribution, and it calculates by using link function $\theta=\theta\bigr(\mathbf{x}, \mathbf{w}\bigr),$ and functions~$b, c$ are some given function. Consider the linear regression task. Test the hypothesis
 \[
 \label{eq:sb:2}
 \begin{aligned}
@@ -237,16 +235,9 @@ Consider~$\textbf{s}_{m} = S_{m,u}\left(\textbf{m}^{0}_{u}, \hat{\textbf{w}}^{0}
 \end{aligned}
 \]
 
-Then the Lagrange statistic is
-\[
-\label{eq:sb:4}
-\begin{aligned}
-	LM = \textbf{s}^{\mathsf{T}}_{m}\textbf{Q}_{m}^{-1}\textbf{s}_{m}.
-\end{aligned}
-\]
-where $\textbf{Q}_{m}$ is the covariance matrix of vector $\textbf{s}_{m}$.
+Then the Lagrange statistic is~$\textbf{s}^{\mathsf{T}}_{m}\textbf{Q}_{m}^{-1}\textbf{s}_{m},$ where $\textbf{Q}_{m}$ is the covariance matrix of vector $\textbf{s}_{m}$.
 	
-When $H_0$ holds, the statistic $LM$ asymptotically follows a $\chi^2(k)$ distribution.  In~(Self et al. 1988) it is shown, that when an alternative hypothesis $H_1$ holds,  $LM$ asymptotically follows a distribution $\chi^2(k,\gamma)$, where $\gamma$ is a non-centrality parameter
+When $H_0$ holds, the Lagrange statistic asymptotically follows a $\chi^2(k)$ distribution.  In~(Self et al. 1988) it is shown, that when an alternative hypothesis $H_1$ holds,  Lagrange statistic asymptotically follows a distribution $\chi^2(k,\gamma)$, where $\gamma$ is a non-centrality parameter
 \[
 \label{eq:sb:5}
 \begin{aligned}
@@ -259,9 +250,10 @@ The alternative method to derive $\gamma$ involves the conditions on the signifi
 \[
 \label{eq:sb:6}
 \begin{aligned}
-	\gamma^*:\chi^2_{k, 1-\alpha} = \chi^2_{k, \beta}\left(\gamma\right).
+	\gamma^*: \chi^2_{k, 1-\alpha} = \chi^2_{k, \beta}\left(\gamma\right),
 \end{aligned}
 \]
+where~$\gamma^*$ is a solution of equation~\eqref{eq:sb:6}.
 Using \eqref{eq:sb:5} and \eqref{eq:sb:6} derive
 \[
 \label{eq:sb:7}
@@ -279,32 +271,36 @@ Let the likelihood of the sample be
 	p(y|\mathbf{x},\textbf{w}) = \exp\left(\frac{y\theta- b(\theta)}{a(\phi)} + c\left(y, \phi\right)\right),
 \end{aligned}
 \]
-where $\theta, \phi$ are parameters of distribution, and it calculates by using link functions $\theta=\theta\bigr(\textbf{x},\textbf{w}\bigr), \phi=\phi\bigr(\textbf{x},\textbf{w}\bigr),$ and functions~$a, b, c$ are some given function.
-
-Test the hypothesis:
+where $\theta, \phi$ are parameters of distribution, and it calculates by using link functions 
+\[
+\label{eq:sb:8.1}
+\begin{aligned}
+\theta=\theta\bigr(\textbf{x},\textbf{w}\bigr), \phi=\phi\bigr(\textbf{x},\textbf{w}\bigr),
+\end{aligned}
+\] and functions~$a, b, c$ are some given function. Consider the linear regression task. Test the hypothesis
 \[
 \label{eq:sb:9}
 \begin{aligned}
 	H_0: \mathsf{E}\textbf{w}_{u} = \textbf{m}^0_{u}, \quad H_1: \mathsf{E}\textbf{w}_{u} \not= \textbf{m}^0_{u}.
 \end{aligned}
 \]
-Introduce the logarithm of likelihood ratio statistics:
+Introduce the logarithm of likelihood ratio statistics
 \[
 \label{eq:sb:10}
 \begin{aligned}
-	LR = 2\Big(l\left(\mathfrak{D}_m, \hat{\textbf{w}}\right) - l\left(\mathfrak{D}_m, \hat{\textbf{w}}^0\right)\Big),
+	2\Big(l\left(\mathfrak{D}_m, [\hat{\textbf{w}}_{u},\hat{\textbf{w}}_{v}]\right) - l\left(\mathfrak{D}_m, [\textbf{m}^{0}_{u},\hat{\textbf{w}}^{0}_{v}]\right)\Big),
 \end{aligned}
 \]
-where $\hat{\textbf{w}} = [\hat{\textbf{w}}_{u},\hat{\textbf{w}}_{v}]$ is the vector, which maximizes likelihood \eqref{eq:sb:8}, $\hat{\textbf{w}}^{0} = [\textbf{m}^{0}_{u},\hat{\textbf{w}}^{0}_{v}]$ is the vector, which maximizes likelihood \eqref{eq:sb:8} with fixed $\textbf{m}^{0}_{u}$.
+where $[\hat{\textbf{w}}_{u},\hat{\textbf{w}}_{v}]$ is the vector, which maximizes likelihood \eqref{eq:sb:8}, $\hat{\textbf{w}}^{0}_{v}$ is the vector, which maximises likelihood \eqref{eq:sb:8} with fixed $\textbf{m}^{0}_{u}$.
 	
-When $H_0$ holds, the statistics $LR$ asymptotically has $\chi^2(k)$ distribution. In~\cite{shieh2000} it is shown, that if the alternative hypothesis $H_1$ holds, $LR$ asymptotically has distribution $\chi^2(k,\gamma)$, where $\gamma$ is a non-centrality parameter, which is given as
+When $H_0$ holds, the likelihood ratio statistics asymptotically has $\chi^2(k)$ distribution. In~\cite{shieh2000} it is shown, that if the alternative hypothesis $H_1$ holds, the likelihood ratio statistics asymptotically has distribution $\chi^2(k,\gamma)$, where $\gamma$ is a non-centrality parameter, which is given as
 \[
 \label{eq:sb:11}
 \begin{aligned}
 	\gamma = m\Delta^*, \quad \Delta^* = \mathsf{E}\left[2a^{-1}(\phi)\left\{\left(\theta - \theta^*\right)\nabla b(\theta) - b(\theta) + b(\theta^*)\right\}\right], 
 \end{aligned}
 \]
-where the parameters $\theta$ and $\theta^*$ are calculated according to the parameters $\textbf{w} = [\textbf{w}_{u}, \textbf{w}_{v}]$ and $\textbf{w}^* = [\textbf{w}^{0}_{u}, \textbf{w}^{*}_{v}]$ respectively. The parameters  $\textbf{w}^{*}_{v}$ are given as the solution of the equation:
+where the parameters $\theta$ and $\theta^*$ are calculated according to the parameters $[\textbf{w}_{u}, \textbf{w}_{v}]$ and $[\textbf{w}^{0}_{u}, \textbf{w}^{*}_{v}]$ respectively. The parameters  $\textbf{w}^{*}_{v}$ are given as the solution of the equation:
 \[
 \label{eq:sb:12}
 \begin{aligned}
@@ -319,19 +315,10 @@ Then with given $\alpha$ and $\beta$ the sufficient sample size $m^*$ is
 	m^* = \frac{\gamma^*}{\Delta^*}, \quad \gamma^*:\chi^2_{k, 1-\alpha} = \chi^2_{k, \beta}\left(\gamma\right), 
 \end{aligned}
 \]
-where $\chi^2_{k, 1-\alpha}$, $\chi^2_{k, \beta}\left(\gamma^*\right)$ are the quantiles of the distributions $\chi^{2}_k$ and $\chi^2_{k}\left(\gamma^*\right)$.
+where $\chi^2_{k, 1-\alpha}$, $\chi^2_{k, \beta}\left(\gamma^*\right)$ are the quantiles of the distributions $\chi^{2}_k$ and $\chi^2_{k}\left(\gamma^*\right),$ and parameter~$\gamma^*$ is a solution of equation~\eqref{eq:sb:13}.
 	
 \subsection{Wald test}
-Let the likelihood of the sample be
-\[
-\label{eq:sb:14}
-\begin{aligned}
-	p(y|\mathbf{x},\textbf{w}) = \exp\left(\frac{y\theta- b(\theta)}{a(\phi)} + c\left(y, \phi\right)\right),
-\end{aligned}
-\]
-where $\theta, \phi$ are parameters of distribution, and it calculates by using link functions $\theta=\theta\bigr(\textbf{x},\textbf{w}\bigr), \phi=\phi\bigr(\textbf{x},\textbf{w}\bigr),$ and functions~$a, b, c$ are some given function.
-
-Test the hypothesis:
+Let the likelihood of the sample be similar to equations~\eqref{eq:sb:8} and~\eqref{eq:sb:8.1}. Consider the linear regression task. Test the hypothesis
 \[
 \label{eq:sb:15}
 \begin{aligned}
@@ -342,16 +329,16 @@ The Wald test for the hypothesis is
 \[
 \label{eq:sb:16}
 \begin{aligned}
-	W = \left(\hat{\textbf{w}}_{u} - \textbf{m}_{u}^{0}\right)^{\mathsf{T}}\hat{\textbf{V}}_{u}^{-1}\left(\hat{\textbf{w}}_{u} - \textbf{m}_{u}^{0}\right),
+	\left(\hat{\textbf{w}}_{u} - \textbf{m}_{u}^{0}\right)^{\mathsf{T}}\hat{\textbf{V}}_{u}^{-1}\left(\hat{\textbf{w}}_{u} - \textbf{m}_{u}^{0}\right),
 \end{aligned}
 \]
-where $\hat{\textbf{w}} = [\hat{\textbf{w}}_{u},\hat{\textbf{w}}_{v}]$ is the vector of parameters, which maximizes likelihood \eqref{eq:sb:14}, and $\hat{\textbf{V}}_u$ is defined in \eqref{eq:ps:6}.
+where $[\hat{\textbf{w}}_{u},\hat{\textbf{w}}_{v}]$ is the vector of parameters, which maximizes likelihood \eqref{eq:sb:8}, and $\hat{\textbf{V}}_u$ is a part of covariance matrix~$\hat{\textbf{V}}=\mathbf{I}^{-1}\bigr(\mathfrak{D}_m, [\hat{\textbf{w}}_{u},\hat{\textbf{w}}_{v}]\bigr)$ corresponding to parameters~$\hat{\textbf{w}}_{u}$.
 
-If $H_0$ holds, the statistic $W$ asymptotically has $\chi^2$ distribution. In~\cite{shieh2005} it is shown that in case of $H_1$, the statistic $W$ asymptotically follows a $\chi^2(k,\gamma)$ distribution, where $\gamma$ is a noncentrality parameter:
+If $H_0$ holds, the Wald test statistic asymptotically has $\chi^2$ distribution. In~\cite{shieh2005} it is shown that in case of $H_1$, the Wald test statistic asymptotically follows a $\chi^2(k,\gamma)$ distribution, where $\gamma$ is a noncentrality parameter:
 \[
 \label{eq:sb:17}
 \begin{aligned}
-	\gamma = m\delta, \quad \delta = \left(\hat{\textbf{w}}_{u} - \textbf{m}_{u}^{0}\right)^{\mathsf{T}}\bm{\Sigma}^{-1}_u\left(\hat{\textbf{w}}_{u} - \textbf{m}_{u}^{0}\right), \quad \bm{\Sigma}_u = m\hat{\textbf{V}}_u.
+	\gamma = m\delta, \quad \delta = \frac{1}{m}\left(\hat{\textbf{w}}_{u} - \textbf{m}_{u}^{0}\right)^{\mathsf{T}}\hat{\textbf{V}}_u^{-1}\left(\hat{\textbf{w}}_{u} - \textbf{m}_{u}^{0}\right).
 \end{aligned}
 \]
 
@@ -362,14 +349,14 @@ Using some given significance level $\alpha$ and the probability of type II erro
 	m^* = \frac{\gamma^*}{\delta}, \quad \gamma^*:\chi^2_{k, 1-\alpha^{*}} = \chi^2_{k, \beta}\left(\gamma\right),
 \end{aligned}
 \]
-where $\chi^2_{k, 1-\alpha^*}$, $\chi^2_{k, \beta}\left(\gamma^*\right)$ are quantiles of distributions and $\alpha^*$ is a correction on the significance levels:
+where parameter~$\gamma^*$ is a solution of equation~\eqref{eq:sb:18}, $\chi^2_{k, 1-\alpha^*}$, $\chi^2_{k, \beta}\left(\gamma^*\right)$ are quantiles of distributions and $\alpha^*$ is a correction on the significance levels:
 \[
 \label{eq:sb:19}
 \begin{aligned}
-	\alpha^* = P\left(\bm{\xi}^{\mathsf{T}}\bm{\Sigma}^{*-1} \bm{\xi} > \chi^2_{k,1 - \alpha}\right), \quad \Sigma^* = \textbf{I}^{-1}\left(\mathfrak{D}_m, \textbf{w}^*\right),
+	\alpha^* = \mathsf{P}\left\{\bm{\xi} | \bm{\xi}^{\mathsf{T}}\textbf{I}\left(\mathfrak{D}_m, \left[\textbf{m}_{u}^{0}, \textbf{w}^{*}_v\right]\right)\bm{\xi} > \chi^2_{k,1 - \alpha}\right\},
 \end{aligned}
 \]
-where $\textbf{w}^{*} = \left[\textbf{m}_{u}^{0}, \textbf{w}^{*}_v\right]$  is a solution of the equation:
+where $\textbf{w}^{*}_v$  is a solution of the equation:
 \[
 \label{eq:sb:20}
 \begin{aligned}
@@ -379,91 +366,53 @@ where $\textbf{w}^{*} = \left[\textbf{m}_{u}^{0}, \textbf{w}^{*}_v\right]$  is a
 
 \section{Heuristics-based sample size estimation}
 The heuristics-based method uses popular statistical heuristics such as bootstrap, cross-validation and feature selection.
-\subsection{Sample size estimation for logistic regression}
-Introduce the set of indexes $\mathcal{A}$ for the logistic regression parameters $\textbf{w}$. Test the hypothesis:
-\[
-\label{eq:hb:1}
-\begin{aligned}
-	H_0: j \not\in\mathcal{A}~\left(\text{w}_{j} = 0\right), \quad H_1: j \in \mathcal{A}^*~\left(\text{w}_{j} \not= 0\right),
-\end{aligned}
-\]
-where $\text{w}_{j}$ is the $j$th element of the vector~$\textbf{w}$. When $H_0$ is not rejected, the vector $\textbf{w}_{\mathcal{A}}$ holds.
-Set the margin $c_0$  for the logistic regression problem and obtain:
-\[
-\label{eq:hb:2}
-\begin{aligned}
-	H_0: 1-c_0 = p_0, \quad H_1: 1-c_0 = p_1,
-\end{aligned}
-\]
-where $c_0$ is an optimal solution of the problem, when the feature $j$ is excluded.
-
-Use the statistic
-\[
-\label{eq:hb:3}
-\begin{aligned}
-	Z = \frac{\hat{p}-p_0}{\sqrt{p_0(1-p_0)}}\sqrt{m}, \quad \hat{p} = \frac{1}{m}\sum_{i=1}^{m}y_i.
-\end{aligned}
-\]
-When $H_0$ is true, statistic $Z$ is asymptotically distributed as $\mathcal{N}\left(0, 1\right)$. In case of $H_1$, $Z$ is asymptotically distributed as $ \mathcal{N}\left(p_1-p_0, \sqrt{\frac{p_1(1-p_1)}{p_0(1-p_0)}}\right)$.
-      
-The sufficient sample size is
-\[
-\label{eq:hb:4}
-\begin{aligned}
-	m^* = \frac{p_0(1-p_0)\left(Z_{1-\alpha/2} + Z_{1-\beta}\sqrt{\frac{p_1(1-p_1)}{p_0(1-p_0)}}\right)^2}{(p_1-p_0)^2},
-\end{aligned}
-\]
-where $Z_{1-\alpha/2}$ and $Z_{1-\beta}$ are quantiles of $\mathcal{N}\left(0, 1\right)$.
-    
-We will not consider this method further, since it can only be used for the logistic regression problem.
     
 \subsection{Cross-validation based method}
 Define the over-fitting criterion as
 \[
 \label{eq:hb:5}
 \begin{aligned}
-	RS(m) = \ln\frac{L(\mathfrak{D}_{\mathcal{L}(m)}, \hat{\textbf{w}})}{L(\mathfrak{D}_{\mathcal{T}(m)}, \hat{\textbf{w}})}, \quad \frac{|\mathcal{T}(m)|}{|\mathcal{L}(m)|} = \text{const} \leq 0.5,
+	\ln\frac{L(\mathfrak{D}_{m_{\text{train}}}, \hat{\textbf{w}})}{L(\mathfrak{D}_{m_{\text{test}}}, \hat{\textbf{w}})}, \quad \frac{m_{\text{test}}}{m_{\text{train}}} = \text{const} \leq 0.5, \quad m_{\text{test}} + m_{\text{train}} = m,
 \end{aligned}
 \]
-where~$\mathcal{T}\bigr(m\bigr)$ and~$\mathcal{L}\bigr(m\bigr)$ is a size of a test and a train parts from the all available dataset~$\mathfrak{D}_{m}$.
+where~$m_{\text{test}}$ and~$m_{\text{train}}$ is a size of a test and a train parts from the all available dataset~$\mathfrak{D}_{m}$.
 Note that 
 \[
 \label{eq:hb:6}
 \begin{aligned}
-	\lim_{m\to \infty}RS(m) \to 0.
+	\lim_{m\to \infty}\ln\frac{L(\mathfrak{D}_{m_{\text{train}}}, \hat{\textbf{w}})}{L(\mathfrak{D}_{m_{\text{test}}}, \hat{\textbf{w}})} \to 0.
 \end{aligned}
 \]
 
-The sufficient sample size $m^*$ is defined according to the condition:
+The sufficient sample size $m^*$ is a sample size such that for all~$m \geq m^*$ the following condition is satisfied:
 \[
 \label{eq:hb:7}
 \begin{aligned}
-	m^*:~\forall m \geq m^*~\mathsf{E}_{\mathfrak{D}_{m}}RS(m) \leq \varepsilon,
+	\mathsf{E}_{\mathfrak{D}_{m}}\ln\frac{L(\mathfrak{D}_{m_{\text{train}}}, \hat{\textbf{w}})}{L(\mathfrak{D}_{m_{\text{test}}}, \hat{\textbf{w}})} \leq \varepsilon,
 \end{aligned}
 \]
-where $\varepsilon$ is an arbitrary parameter.
+where~$\varepsilon$ is an arbitrary parameter.
 
 \subsection{Bootstrap-based method}
-This method assumes that the lengths of the bootstrap quantile confident intervals do not exceed some fixed value $l$. Given some sample size $m$ calculate the quantile confident intervals $\left(a^m_1, b^m_1\right), \left(a^m_2, b^m_2\right), ..., \left(a^m_n, b^m_n\right)$ with significance level of $\alpha$ using bootstrap for every parameter of the model. The sufficient sample size is
+This method assumes that the lengths of the bootstrap quantile confident intervals do not exceed some fixed value $l$. Given some sample size $m$ calculate the quantile confident intervals $\left(a^m_1, b^m_1\right), \left(a^m_2, b^m_2\right), ..., \left(a^m_n, b^m_n\right)$ with significance level of $\alpha$ using bootstrap for every parameter of the model. The sufficient sample size $m^*$ is a sample size such that for all~$m \geq m^*$ the following condition is satisfied:
 \[
 \label{eq:hb:8}
 \begin{aligned}
-	m^*: \forall m\geq m^* \max_i\left(b^m_i - a^m_i\right) < l.
+	\max_i\left(b^m_i - a^m_i\right)  \leq l,
 \end{aligned}
 \]
-    
-Note that this method is coordinate-wise. Therefore, to increase the prediction accuracy is required a significant increase in the sample size.
+where~$l$ is an arbitrary parameter. Note that this method is coordinate-wise. Therefore, to increase the prediction accuracy is required a significant increase in the sample size.
     
 \section{Bayesian sample size estimation}
 \subsection{Model effectiveness analysis}
-The Bayesian methods of sample size estimation are based on a restriction of some model characteristics. For effectiveness analysis the function of sample size is defined. Increasing of this function is interpreted as decreasing of model effectiveness. Sample size $m^*$ is chosen such that the explored function is lesser than some threshold~$\varepsilon$.
+The Bayesian methods of sample size estimation are based on a restriction of some model characteristics. For effectiveness analysis the function of sample size is defined. Increasing of this function is interpreted as decreasing of model effectiveness. Sample size $m^*$ is chosen such that the explored function is lesser then some threshold~$\varepsilon$.
 
 \paragraph{Average posterior variance criterion.}
-The sample size $m^*$ is defined by the condition:
+The sample size $m^*$ is a sample size such that for all~$m \geq m^*$ the following condition is satisfied:
 \[
 \label{eq:bs:1}
 \begin{aligned}
-	\forall m \geq m^*  ~ \mathsf{E}_{\mathfrak{D}_m}\mathsf{D}\left[\hat{\textbf{w}}|\mathfrak{D}_m\right] \leq l.
+	\mathsf{E}_{\mathfrak{D}_m}\mathsf{D}\left[\hat{\textbf{w}}|\mathfrak{D}_m\right] \leq l.
 \end{aligned}
 \]
 where $l$ is some given parameter, which quantifies the uncertainty of parameter estimation.
@@ -477,11 +426,11 @@ Denote by $A\left(\mathfrak{D}_{m}\right) \subset \mathbb{R}^n$ be some set of t
 \end{aligned}
 \]
 where $l$ is some fixed ball radius.
-The sample size $m^*$ is defined by the average coverage criterion:
+The sample size $m^*$ is defined by the average coverage criterion, where~$m^*$ is a sample size such that for all~$m \geq m^*$ the following condition is satisfied:
 \[
 \label{eq:bs:3}
 \begin{aligned}
-	\forall m \geq m^*  ~ \mathsf{E}_{\mathfrak{D}_m}\mathsf{P}\left\{\textbf{w} \in A\left(\mathfrak{D}_m\right)\right\} \geq 1-\alpha,
+	\mathsf{E}_{\mathfrak{D}_m}\mathsf{P}\left\{\textbf{w} \in A\left(\mathfrak{D}_m\right)\right\} \geq 1-\alpha,
 \end{aligned}
 \]
 where $\alpha$ is some small value.
@@ -494,12 +443,12 @@ Use the coverage of the model parameters~$\textbf{w}$ and define $A\left(\mathfr
 	\mathsf{P}\left(A\left(\mathfrak{D}_{m}\right)\right) =  1- \alpha.
 \end{aligned}
 \]
-The average length criterion estimates  $m^*$ as in \eqref{eq:bs:3}:
+The average length criterion estimates~$m^*$ as in \eqref{eq:bs:3}, where~$m^*$ is a sample size such that for all~$m \geq m^*$ the following condition is satisfied:
 	
 \[
 \label{eq:bs:5}
 \begin{aligned}
-	\forall m \geq m^*  ~ \mathsf{E}_{\mathfrak{D}_m}r_m\leq l,
+	\mathsf{E}_{\mathfrak{D}_m}r_m\leq l,
 \end{aligned}
 \]
 where $r_m$ is the ball radius $A\left(\mathfrak{D}_{m}\right)$.
@@ -509,7 +458,7 @@ Methods of this class maximize the expectation of some utility function $u\left(
 \[
 \label{eq:bs:6}
 \begin{aligned}
-	m^* = \argmax_{m} \mathsf{E}_{\mathfrak{D}_m}\int_{\textbf{w}}u\left(\mathfrak{D}_m, \textbf{w}\right)p(\textbf{w}|\mathfrak{D}_m)d\textbf{w},
+	m^* = \argmax_{m} \mathsf{E}_{\mathfrak{D}_m}\int_{\textbf{w}\in\mathbb{R}^{n}}u\left(\mathfrak{D}_m, \textbf{w}\right)p(\textbf{w}|\mathfrak{D}_m)d\textbf{w},
 \end{aligned}
 \]
 where utility function $u\left(\mathfrak{D}_{m}, \textbf{w}\right)$ has the form:
@@ -520,33 +469,34 @@ where utility function $u\left(\mathfrak{D}_{m}, \textbf{w}\right)$ has the form
 	u\left(\mathfrak{D}_m, \textbf{w}\right) = l\left(\mathfrak{D}_m, \textbf{w}\right) - cm,
 \end{aligned}
 \]
- where $c$  is a penalization function for each element in the sample set.  
+ where $c$  is a given penalty constant for each element in the sample set~$\mathfrak{D}_m$.  
 	 
 \subsection{Kullback-Leibler divergence}
 Call the index  sets $\mathcal{B}_1,\mathcal{B}_2 \subset \{1,...,m\}$ in the neighbourhood, if
 \[
 \label{eq:bs:8}
 \begin{aligned}
-	\left|\mathcal{B}_1 \Delta \mathcal{B}_2\right| = 1.
+	\left|\mathcal{B}_1 \triangle \mathcal{B}_2\right| = 1.
 \end{aligned}
 \]
-So that $\mathcal{B}_2$ can be transformed into $\mathcal{B}_1$ by removal, replacement or addition of one element. In~\cite{motrenko2014} it is shown that if the size of the sample set $\mathfrak{D}_{|\mathcal{B}_1|}$ is large enough, than the model  parameters $\hat{\textbf{w}}_1$, which  are optimised with $\mathfrak{D}_{|\mathcal{B}_1|}$ must be in the neighbourhood of the model parameters $\hat{\textbf{w}}_2$, which are optimised with $\mathfrak{D}_{|\mathcal{B}_2|}$. 
+So that $\mathcal{B}_2$ can be transformed into $\mathcal{B}_1$ by removal, replacement or addition of one element from sample set~$\mathfrak{D}_m$. In~\cite{motrenko2014} it is shown that if the size of the sample set $\mathfrak{D}_{|\mathcal{B}_1|}$ is large enough, than the model  parameters $\hat{\textbf{w}}_1$, which  are optimised with $\mathfrak{D}_{|\mathcal{B}_1|}$ must be in the neighbourhood of the model parameters $\hat{\textbf{w}}_2$, which are optimised with $\mathfrak{D}_{|\mathcal{B}_2|}$. Parameters~$\hat{\textbf{w}}_1, \hat{\textbf{w}}_2$ are optimised according to maximum likelihood principle~\eqref{eq:ps:4} for the given datasets~$\mathfrak{D}_{|\mathcal{B}_1|}, \mathfrak{D}_{|\mathcal{B}_2|}$ respectively.
 	 
 Use Kullback-Leibler divergence as a proximity function between distributions of the model parameters, optimised with $\mathfrak{D}_{|\mathcal{B}_1|}$ and $\mathfrak{D}_{|\mathcal{B}_2|}$:
 \[
 \label{eq:bs:9}
 \begin{aligned}
-	D_\text{KL}\left(p_1, p_2\right) = \int_{\textbf{w}\in\mathbb{R}^{n}}p_1(\textbf{w})\log\frac{p_1(\textbf{w})}{p_2(\textbf{w})}d\textbf{w},
+	D_\text{KL}\left(p_1 || p_2\right) = \int_{\textbf{w}\in\mathbb{R}^{n}}p_1(\textbf{w})\log\frac{p_1(\textbf{w})}{p_2(\textbf{w})}d\textbf{w},
 \end{aligned}
 \]
 where $p_1$ and $p_2$ are posterior probabilities of vector of parameters $\textbf{w}$ calculated on subsamples $\mathfrak{D}_{|\mathcal{B}_1|}$ and $\mathfrak{D}_{|\mathcal{B}_2|}$ respectively. It is also assumed that $\mathfrak{D}_{|\mathcal{B}_1|}$ and $\mathfrak{D}_{|\mathcal{B}_2|}$ are in the neighbourhood.
-Then estimate the sample size $m^*$ as:
+Then estimated sample size $m^*$ is the minimum value at which for all subsample~$\mathfrak{D}_{|\mathcal{B}_1|}$ with size~$|\mathcal{B}_1|\geq m^*$ the following condition is satisfied:
 \[
 \label{eq:bs:10}
 \begin{aligned}
-	\forall \mathfrak{D}_{|\mathcal{B}_1|}:~\left|\mathfrak{D}_{|\mathcal{B}_1|}\right| \geq m^*  ~ \mathsf{E}_{\mathfrak{D}_{|\mathcal{B}_2|}}D_{KL}\left(p_1, p_2\right) \leq \varepsilon.
+	\mathsf{E}_{\mathfrak{D}_{|\mathcal{B}_2|}}D_\text{KL}\left(p_1 || p_2\right) \leq \varepsilon,
 \end{aligned}
 \]
+where~$\varepsilon$ is an arbitrary parameter. The equation~\eqref{eq:bs:10} shows that the difference in one element from~$\mathfrak{D}_m$ does not significantly affect the parameters distribution~$\mathbf{w}$. 
 
 \begin{table}[!htp]
 \centering
