@@ -1,6 +1,6 @@
 %%
 %% ****** Generated 18.03.21 by LJM TeX-constructor******
-%%
+%%Sat 25 september
 \documentclass[
 11pt,%
 tightenlines,%
@@ -17,7 +17,7 @@ centertags]%
 
 \setcounter{page}{3}
 
-\usepackage{subfig}
+\usepackage[caption=false]{subfig}
 \usepackage{amssymb}
 \usepackage{bm}
 \usepackage{amsmath}
@@ -53,8 +53,6 @@ centertags]%
 
 \firstcollaboration{Andrey Grabovoy}
 \received{}
-
-
 
 \begin{abstract}
 This paper investigates the problem of cost reduction of data collection procedures. To select an adequate model for regression or classification, a sample set of minimum sufficient size is required. This sample set must follow the data generation hypothesis: generalised linear regression models require independent and identically distributed target variables.  Several numerical methods of sample size estimation are analysed and compared in practical terms. Statistic-based, heuristics and Bayesian types of methods are considered. Since the practical goal of the data collection is to construct a forecasting model, several tests use the model parameters.  The computational experiment includes widely used sample sets. The open-source code and the software for the practitioners are provided.
@@ -576,7 +574,7 @@ Utility function 						& -- & -- 	& 0.005& -- & --\\
 \subsection{Dependency between available data and sample size prediction}
 The computational experiment was conducted to analyse the described methods. The sample set is the Boston Housing Dataset. Having a full sample set, fix some sample size $m$ and generate series of bootstrap subsamples of size $m$ from the initial sample set. For different values of $m$ compute $m^*$, average them and calculate standard deviation. 
     
-\begin{figure}[h!t]\center
+\begin{figure}[h!]\centering
     \subfloat[Cross-validation ]{\includegraphics[width=0.49\textwidth]{cross.pdf}}
     \subfloat[APVC ]{\includegraphics[width=0.49\textwidth]{apvc.pdf}}\\
     \subfloat[ACC ]{\includegraphics[width=0.49\textwidth]{acc.pdf}}
