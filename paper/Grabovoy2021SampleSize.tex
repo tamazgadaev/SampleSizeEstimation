@@ -470,8 +470,6 @@ where~$\varepsilon$ is some fixed value. The equation~\eqref{eq:bs:10} assumes t
 \end{table} 
 	 
 \section{Computational experiment}
-The experiment analyses  properties of the~sample size estimation methods. It consists of three parts. The~first part obtains , size estimations for all sample sets, given fixed identical parameters of the~methods. The~second part investigates dependence of the~sufficient sample sizes on available sample sets. The~third part investigates how the methods depend on alteration of parameters. Five sample sets are described in Table~\ref{table20}. Nine methods in~Table~\ref{table2} show sample size estimations for these sample sets. 
- 
 \begin{table}[!htp]
 \centering
 \caption{Experimental estimation of sample size  for various sample sets}
@@ -491,12 +489,12 @@ Utility Function & 148 & 172 & 206 & 105 & 925 \\ \hline
 \end{tabular}
 \end{table}
 
-\subsection{Sample size estimation for various sample sets}
+The experiment analyses  properties of the~sample size estimation methods. It consists of three parts. The~first part obtains , size estimations for all sample sets, given fixed identical parameters of the~methods. The~second part investigates dependence of the~sufficient sample sizes on available sample sets. The~third part investigates how the methods depend on alteration of parameters. Five sample sets are described in Table~\ref{table20}. Nine methods in~Table~\ref{table2} show sample size estimations for these sample sets. 
+ 
 This part of computation experiment shows how different methods work on various sample sets. It uses Boston Housing~\cite{boston}, Diabetes, Forest Fires, Servo~\cite{servo}, and NBA.
 The result is presented in Table~\ref{table2}. The symbol ``--'' here means that there is not enough samples for the~prediction.
 
-Each method use a~whole-size sample set at the~start. Table~\ref{table3} shows the parameters of each method. Since~the Lagrange, Likelihood Ration and Wald tests are asymptotically equivalent, their~parameters were equal. The parameters of the~Average Coverage and Average Length methods were equal, too.
-
+\subsection{Sample size estimation for various sample sets}
 \begin{table}[h!]
 \begin{center}
 \caption{List of parameters of the~sample size estimation methods}
@@ -527,9 +525,10 @@ Utility function 					& -- & -- 	& 0.005& -- & --\\
 \end{center}
 \end{table}
 
-\subsection{Dependency between available sample sets and prediction of their sizes}
-This dependency analysis uses the~Boston Housing sample set~\cite{boston}. Given the whole sample set, fix some~$m$ and randomly sample series of bootstrap subsets of size~$m$ from the~initial set. For different values of~$m$ compute values~$m^*$, average them and calculate standard deviation. 
- 
+
+Each method use a~whole-size sample set at the~start. Table~\ref{table3} shows the parameters of each method. Since~the Lagrange, Likelihood Ration and Wald tests are asymptotically equivalent, their~parameters were equal. The parameters of the~Average Coverage and Average Length methods were equal, too.
+
+
 \begin{figure}[h!]
 % \subfloat[Cross-validation ]{\includegraphics[width=0.49\textwidth]{cross.pdf}}
 % \subfloat[APVC ]{\includegraphics[width=0.49\textwidth]{apvc.pdf}}\\
@@ -543,14 +542,20 @@ This dependency analysis uses the~Boston Housing sample set~\cite{boston}. Given
 \label{fig1}
 \end{figure}
 
-Figure~\ref{fig1} shows how the~static value of each method depends on sample size~$m$. %The thresholds for each method are set by the authors.  
-Figure~\ref{fig1} demonstrates adequacy of different definitions of sample size sufficiency. Every presented function is monotonous and asymptotically tends to some~constant. Figure~\ref{fig2} shows estimated sample size~$m^*$ for  different sizes~$m$ of the sample set. It shows how methods differ in variance  of estimated values~$m^*$ and how methods behave in case of small size of the sample set. All methods converge and the~result does not depends on the sample size starting from some value of~$m$. 
+\subsection{Dependency between available sample sets and prediction of their sizes}
 
+This dependency analysis uses the~Boston Housing sample set~\cite{boston}. Given the whole sample set, fix some~$m$ and randomly sample series of bootstrap subsets of size~$m$ from the~initial set. For different values of~$m$ compute values~$m^*$, average them and calculate standard deviation. 
+ 
 \begin{figure}[!hbp]
 \centering{\includegraphics[width=0.85\textwidth]{fig2}}%{graphs.png}}
  \caption{Methods behaviour depending on the~available sample size.}
 \label{fig2}
 \end{figure}
+
+Figure~\ref{fig1} shows how the~static value of each method depends on sample size~$m$. %The thresholds for each method are set by the authors.  
+Figure~\ref{fig1} demonstrates adequacy of different definitions of sample size sufficiency. Every presented function is monotonous and asymptotically tends to some~constant. Figure~\ref{fig2} shows estimated sample size~$m^*$ for  different sizes~$m$ of the sample set. It shows how methods differ in variance  of estimated values~$m^*$ and how methods behave in case of small size of the sample set. All methods converge and the~result does not depends on the sample size starting from some value of~$m$. 
+
+
  
 The small value of the variance of~$m^*$ could be interpreted as stability of the~methods. 
 %output with little dependency on a~particular subset of some size. 
