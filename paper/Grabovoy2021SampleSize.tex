@@ -15,7 +15,7 @@ centertags]%
 {revtex4}
 \usepackage{ljm}
 %\setcounter{page}{3}
-\usepackage[caption=false]{subfig}
+
 \usepackage{amssymb}
 \usepackage{bm}
 \usepackage{amsmath}
@@ -24,6 +24,8 @@ centertags]%
 \DeclareMathOperator*{\argmax}{arg\,max}
 \DeclareMathOperator*{\argmin}{arg\,min}
 \newcommand*{\No}{No.}
+
+\usepackage{subfigure}
 
 \begin{document}
 \titlerunning{Sample size estimation} % for running heads
@@ -441,19 +443,19 @@ Utility function 					& -- & -- 	& 0.005& -- & --\\
 \end{table}
 
 \subsection{Sample size estimation for various sample sets}
-Each method use a~whole-size sample set at the~start. Table~\ref{table3} shows the parameters of each method. Since~the Lagrange, Likelihood Ration and Wald tests are asymptotically equivalent, their~parameters were equal. The parameters of the~Average Coverage and Average Length methods were equal, too.
-
 \begin{figure}[h!]
-\subfloat[Cross-validation ]{\includegraphics[width=0.49\textwidth]{cross}}
-\subfloat[APVC]{\includegraphics[width=0.49\textwidth]{apvc}}\\
-\subfloat[ACC]{\includegraphics[width=0.49\textwidth]{acc}}
-\subfloat[ALC]{\includegraphics[width=0.49\textwidth]{alc}}\\
-\subfloat[Bootstrap]{\includegraphics[width=0.49\textwidth]{bootstrap}}
-\subfloat[Utility function]{\includegraphics[width=0.49\textwidth]{maxu}}
-% \includegraphics[width=1.0\textwidth]{fig1}
+\subfigure[Cross-validation]{\includegraphics[width=0.49\textwidth]{cross}}
+\subfigure[APVC]{\includegraphics[width=0.49\textwidth]{apvc}}\\
+\subfigure[ACC]{\includegraphics[width=0.49\textwidth]{acc}}
+\subfigure[ALC]{\includegraphics[width=0.49\textwidth]{alc}}\\
+\subfigure[Bootstrap]{\includegraphics[width=0.49\textwidth]{bootstrap}}
+\subfigure[Utility function]{\includegraphics[width=0.49\textwidth]{maxu}}
 \caption{Dependency of the methods on the available sample size.}
 \label{fig1}
 \end{figure}
+
+Each method use a~whole-size sample set at the~start. Table~\ref{table3} shows the parameters of each method. Since~the Lagrange, Likelihood Ration and Wald tests are asymptotically equivalent, their~parameters were equal. The parameters of the~Average Coverage and Average Length methods were equal, too.
+
 
 \subsection{Dependency between available sample sets and prediction of their sizes}
 This dependency analysis uses the~Boston Housing sample set~\cite{boston}. Given the whole sample set, fix some~$m$ and randomly sample series of bootstrap subsets of size~$m$ from the~initial set. For different values of~$m$ compute values~$m^*$, average them and calculate standard deviation. 
