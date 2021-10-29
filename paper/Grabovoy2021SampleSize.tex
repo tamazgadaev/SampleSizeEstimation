@@ -58,7 +58,6 @@ The design of experiment requires to estimate the~minimum sample size: the~numbe
 The classical methods assume that the~sample set corresponds to some prior conditions formulated a~priori. These conditions are formulated as statistical criterions~\cite{self1988, self1992, shieh2000, demidenko2007}. The sample size estimation method, related to this criterion, guarantees that the~fixed statistical power~$1-\beta$ with extent to the~false positive error does not exceed the~set value~$\alpha$ will be approached. This sample size is called \emph{sufficient}.
 
 \begin{table}
-\begin{center}
 \caption{Methods of sample size estimation}
 \label{table1}
 \begin{tabular}{p{0.2\textwidth}|p{0.7\textwidth}|p{0.05\textwidth}}
@@ -108,56 +107,41 @@ The classical methods assume that the~sample set corresponds to some prior condi
 	&\cite{lindley1997}\\
 \hline
 \end{tabular}
-\end{center}
 \end{table}
 
-The practical applications of the~sample size estimation methods assume a~model~\cite{kloek1975} to approximate the~measured data. This model is selected from the~class of generalised linear models according to regression or classification problem statement. To estimate the~sample size for generalised linear regression, the~paper~\cite{self1988} introduces the~method of power estimation with the~Lagrange multiplier test. The weakness of this method: when an alternative hypothesis differs greatly from the~null hypothesis, the~maximum likelihood estimations of the~model parameters and their covariance matrix are not asymptotically consistent in the~alternative hypothesis. In~\cite{self1992} a~similar method is proposed. It is based on the~maximum likelihood ratio test. It is more accurate for series of independent variables. The paper~\cite{shieh2005} proposes a~method for the~Wald statistic. The paper~\cite{motrenko2014} proposes a method, which uses the~variance of the~ROC curve to estimate the~sample size for the~logistic regression model. The classical methods~\cite{self1988, self1992, shieh2000, shieh2005} have series of restrictions, related to their practical applications. In order to estimate the~sample size, they require the~estimations of parameters or, in general case, the~distribution of parameters. These methods do not show how to obtain these estimations. %The estimation of the~variance and non-centrality parameter will not be obtained with a~certain variance the~influence of which on the~sample size estimation result is irrelevant. 
+The practical applications of the~sample size estimation methods assume a~model~\cite{kloek1975} to approximate the~measured data. This model is selected from the~class of generalised linear models according to regression or classification problem statement. To estimate the~sample size for generalised linear regression, the~paper~\cite{self1988} introduces the~method of power estimation with the~Lagrange multiplier test. The weakness of this method: when an alternative hypothesis differs greatly from the~null hypothesis, the~maximum likelihood estimations of the~model parameters and their covariance matrix are not asymptotically consistent in the~alternative hypothesis. In~\cite{self1992} a~similar method is proposed. It is based on the~maximum likelihood ratio test. It is more accurate for series of independent variables. The paper~\cite{shieh2005} proposes a~method for the~Wald statistic. The paper~\cite{motrenko2014} proposes a method, which uses the~variance of the~ROC curve to estimate the~sample size in~logistic regression. The methods~\cite{self1988, self1992, shieh2000, shieh2005} have series of restrictions, related to their practical applications. In order to estimate the~sample size, they require the~estimations of parameters or, in general case, the~distribution of parameters. These methods do not show how to obtain these estimations. %The estimation of the~variance and non-centrality parameter will not be obtained with a~certain variance the~influence of which on the~sample size estimation result is irrelevant. 
 
 The statistic-based methods~\cite{motrenko2014,qumsiyeh2013} estimate the~sample size under assumptions on the~distribution of the~sample set. When the~size of the~sample under investigation is sufficient or excessive, it is possible to use the~methods, based on the~observation of alteration of certain characteristic, of the~model-building procedure when enhancing the~sample size. In particular, when observing the~relation of the~forecasting quality with the~control sample and training sample~\cite{motrenko2014}, we shall determine the~sufficient sample size which corresponds to the~start of over-training. In the~paper~\cite{qumsiyeh2013}, a~bootstrap method is used to estimate the~sufficient sample size. The excess of the~current sample size is checked on the~basis of a~confident intervals analysis of the~parameter estimated. The width of the~confident interval with different values of the~sample size is estimated with the~help of a~bootstrap method. For this purpose, the~samples of smaller size are sampled the~specified number of times, and the~confident interval for an error when estimating the~model parameter is calculated. The sample size is considered sufficient when the~width of the~confident interval does not exceed a~certain value set in advance.
 
-The restrictions of statistic-based methods of sample size estimation listed above are considered in details in Bayesian procedure~\cite{lindley1997, rubin1998, wang2002} where the~sample size estimation is determined on the~basis of maximisation of the~expected merit function~\cite{lindley1997}. The merit function may include the~explicit parameter distribution functions and penalties for the~sample size enhancement. The alternative to the~approaches~\cite{wang2002} based on the~merit function is the~sampling of the~sample size by setting restrictions on a~certain model parameter estimation quality criterion. The examples of such criteria are the~following: average posterior variance criterion (AVPC), average length criterion (ALC), average coverage criterion (ACC). For every criterion listed, the~sample size estimation is determined as a~minimum value of the~sample size for which the~expected value of the~criterion chosen does not exceed any fixed threshold. In the~paper~\cite{motrenko2014}, it is proposed that the~sample size be considered sufficient if the~space between the~distributions estimated on the~basis of subsets of this size is sufficiently small. Such approach does not require any further generalisation in case of multiple variables. Besides, estimation may be made in the~presence of data distribution assumptions, as well as in their absence. The weakness of this approach is in the~fact that quantitative estimation can be obtained only when the~sample size is excessive. 
+The restrictions of these statistic-based methods are considered in details in Bayesian procedure~\cite{lindley1997, rubin1998, wang2002} where the~sample size estimation is determined on the~basis of maximisation of the~expected merit function~\cite{lindley1997}. The merit function may include the~explicit parameter distribution functions and penalties for the~sample size enhancement. The alternative to the~approaches~\cite{wang2002} based on the~merit function is the~sampling of the~sample size by setting restrictions on a~certain model parameter estimation quality criterion. The examples of such criteria are the~following: average posterior variance criterion (AVPC), average length criterion (ALC), average coverage criterion (ACC). For every criterion listed, the~sample size estimation is determined as a~minimum value of the~sample size for which the~expected value of the~criterion chosen does not exceed any fixed threshold. In the~paper~\cite{motrenko2014}, it is proposed that the~sample size be considered sufficient if the~space between the~distributions estimated on the~basis of subsets of this size is sufficiently small. Such approach does not require any further generalisation in case of multiple variables. Besides, estimation may be made in the~presence of data distribution assumptions, as well as in their absence. The weakness of this approach is in the~fact that quantitative estimation can be obtained only when the~sample size is excessive. 
 
 \section{Problem statement of model construction}
-There given the~sample set of size~$m$:
-\[
-\label{eq:ps:1}
-\begin{aligned}
-	\mathfrak{D}_{m} = \{\mathbf{x}_i, y_i\}_{i = 1}^{m}
-\end{aligned}
-\]
+There given the~sample set of size~$m$,
+$\mathfrak{D}_{m} = \{\mathbf{x}_i, y_i\}_{i = 1}^{m}$, %\label{eq:ps:1}
 where~$\mathbf{x}_i\in \mathbb{R}^{n}$,~$y_i\in \mathbb{Y}$. The set~$\mathbb{Y}$ is equal to~$\mathbb{R}$ in regression and~$\mathbb{Y}=\{1,\dots K\}$ in~$K$-classes classification. The feature vector~$\mathbf{x}_{i} = [\mathbf{u}_{i}, \mathbf{v}_{i}]$ concatenates~$\mathbf{u}_i\in \mathbb{R}^{k}$ and~$~\mathbf{v}_i\in \mathbb{R}^{n-k}$.
 
-Introduce some parametric family~$p(y|\mathbf{x}, \mathbf{w})$ to approximate unknown posterior distribution~$p(y|\mathbf{x})$ of the~target value~$y$, given the~feature vector~$\mathbf{x}$ and the~parameters~$\mathbf{w}\in \mathbb{R}^{n}$.
+Introduce some parametric family~$p(y|\mathbf{x}, \mathbf{w})$, a model to approximate unknown posterior distribution~$p(y|\mathbf{x})$ of the~target value~$y$, given the~feature vector~$\mathbf{x}$ and the~parameters~$\mathbf{w}\in \mathbb{R}^{n}$.
 
 Define the~likelihood function and logarithmic likelihood function of the~sample set~$\mathfrak{D}_{m}$:
 \[
 \label{eq:ps:4}
-\begin{aligned}
 	L\left(\mathfrak{D}_{m}, \mathbf{w}\right) = \prod_{i=1}^{m} p\left(y_{i}|\mathbf{x}_{i}, \mathbf{w}\right),\quad l\left(\mathfrak{D}_{m}, \mathbf{w}\right) = \sum_{i=1}^{m} \log p\left(y_i|\mathbf{x}_{i}, \mathbf{w}\right).
-\end{aligned}
 \]
-
-Estimate parameters~$\mathbf{w}$ using likelihood:
+Estimate the model parameters~$\mathbf{w}$ using the likelihood function:
 \[
 \label{eq:ps:5}
-\begin{aligned}
 	\hat{\mathbf{w}} = \argmax_{\mathbf{w}\in\mathbb{R}^{n}}L\left(\mathfrak{D}_{m}, \mathbf{w}\right).
-\end{aligned}
 \]
 
 This paper assumes~$\mathbf{w}$~is~a~random variable, sampled from the~normal distribution with parameters~$\hat{\mathbf{w}}$ and~$\mathbf{V}$,
 \[
 \label{eq:ps:5'}
-\begin{aligned}
  \mathbf{w} \sim \mathcal{N}\bigr(\hat{\mathbf{w}}, \mathbf{V}\bigr),
-\end{aligned}
 \]
-where matrix~$\mathbf{V}$ is given by using Fisher information matrix of the~form
+where matrix~$\mathbf{V}$ is given by using the Fisher information matrix
 \[
 \label{eq:ps:6}
-\begin{aligned}
 	\mathbf{I}\left(\mathfrak{D}_{m}, \mathbf{w}\right) = -\frac{\partial^2}{\partial \mathbf{w}^{2}}l\left(\mathfrak{D}_{m}, \mathbf{w}\right), \quad \mathbf{V} = \mathbf{I}^{-1}\left(\mathfrak{D}_{m}, \mathbf{w}\right).
-\end{aligned}
 \]
 Below the~statistic-based and Bayesian methods use the~Fisher information matrix to estimate the~sample size.
 
@@ -168,50 +152,38 @@ The main advantage of the~statistic-based methods is their capability to estimat
 In linear regression use the~likelihood function
 \[
 \label{eq:sb:1}
-\begin{aligned}
 	p(y|\mathbf{x}, \mathbf{w}) = \exp\bigl(y\theta- b(\theta) + c\left(y\right)\bigr).
-\end{aligned}
 \]
 The functions~$b, c$ are given. The parameters~$\theta=\theta\bigr(\mathbf{x}, \mathbf{w}\bigr)$ are defined by the~link function. Test the~hypothesis
 \[
 \label{eq:sb:2}
-\begin{aligned}
 	H_0: \mathsf{E}\mathbf{w}_{u} = \mathbf{m}^0_{u}, \quad H_1: \mathsf{E}\mathbf{w}_{u} \not= \mathbf{m}^0_{u}.
-\end{aligned}
 \]
 Let the~statistics~$S_{m,u}\left(\mathbf{w}_{u}, \mathbf{w}_{v}\right)$ and~$S_{m,v}\left(\mathbf{w}_{u}, \mathbf{w}_{v}\right)$ be derivatives of this log-likelihood function, given the~sample set~$\mathfrak{D}_{m}$ with respect to parameters~$\mathbf{w}_{u}$ and~$\mathbf{w}_{v}$.
 Compute~$\mathbf{s}_{m} = S_{m,u}\left(\mathbf{m}^{0}_{u}, \hat{\mathbf{w}}^{0}_{v}\right)$, where~$\hat{\mathbf{w}}^{0}_{v}$ is~a~solution of the~equation
 \[
 \label{eq:sb:3}
-\begin{aligned}
 	S_{m,v}\left(\mathbf{m}^{0}_{u}, \mathbf{w}_{v}\right) = 0.
-\end{aligned}
 \]
 The Lagrange statistic is~$\mathbf{s}^{\mathsf{T}}_{m}\mathbf{Q}_{m}^{-1}\mathbf{s}_{m}$, where~$\mathbf{Q}_{m}$ is the~covariance matrix of~$\mathbf{s}_{m}$.
 	
 When~$H_0$ holds, the~Lagrange statistic asymptotically tends to the~$\chi^2(k)$ distribution. The paper~\cite{self1988} shows that if the~alternative hypothesis~$H_1$ holds, the~Lagrange statistic asymptotically tends to~$\chi^2(k,\gamma)$, where~$\gamma$ is the~non-centrality parameter
 \[
 \label{eq:sb:5}
-\begin{aligned}
 	\gamma = \bm{\xi}_{m}^{\mathsf{T}}\bm{\Sigma}^{-1}_{m}\bm{\xi}_{m} = m\bm{\xi}^{\mathsf{T}}\bm{\Sigma}^{-1}\bm{\xi}= m\gamma^0,
-\end{aligned}
 \]
 and~$\bm{\xi}_{m}$,~$\bm{\Sigma}_{m}$ are the~expectation and covariance matrix of~$\mathbf{s}_{m}$. Denote~$\bm{\xi}_1 = \bm{\xi}$ and~$\bm{\Sigma}_1 = \bm{\Sigma}$. 
 	
 The alternative method to estimate~$\gamma$ involves the~conditions on the~significance level~$\alpha$ and the~probability of true negative error~$\beta$:
 \[
 \label{eq:sb:6}
-\begin{aligned}
 	\gamma^*: \chi^2_{k, 1-\alpha} = \chi^2_{k, \beta}\left(\gamma\right),
-\end{aligned}
 \]
 where~$\gamma^*$ is~a~solution of equation~\eqref{eq:sb:6}.
 Using~\eqref{eq:sb:5} and~\eqref{eq:sb:6} get the~minimum sample size
 \[
 \label{eq:sb:7}
-\begin{aligned}
 	m^* = \frac{\gamma^*}{\gamma^0}.
-\end{aligned}
 \]
 This is~a~sufficient minimum sample size to tell~$\mathsf{E}\mathbf{w}_{u}$ from~$\mathbf{m}^0_{u}$.
 
@@ -219,39 +191,29 @@ This is~a~sufficient minimum sample size to tell~$\mathsf{E}\mathbf{w}_{u}$ from
 Let the~likelihood of the~sample set be
 \[
 \label{eq:sb:8}
-\begin{aligned}
 	p(y|\mathbf{x},\mathbf{w}) = \exp\left(\frac{y\theta- b(\theta)}{a(\phi)} + c\left(y, \phi\right)\right),
-\end{aligned}
 \]
 where~$\theta, \phi$ are parameters,  defined by the link functions 
 \[
 \label{eq:sb:8.1}
-\begin{aligned}
 \theta=\theta\bigr(\mathbf{x},\mathbf{w}\bigr),\quad \phi=\phi\bigr(\mathbf{x},\mathbf{w}\bigr).
-\end{aligned}
 \] 
 The functions~$a, b, c$ are given. In~linear regression test the~hypothesis
 \[
 \label{eq:sb:9}
-\begin{aligned}
 	H_0: \mathsf{E}\mathbf{w}_{u} = \mathbf{m}^0_{u}, \quad H_1: \mathsf{E}\mathbf{w}_{u} \not= \mathbf{m}^0_{u}.
-\end{aligned}
 \]
 Introduce the~logarithm of likelihood ratio statistic
  \[
 \label{eq:sb:10}
-\begin{aligned}
 	2\Big(l\left(\mathfrak{D}_m, [\hat{\mathbf{w}}_{u},\hat{\mathbf{w}}_{v}]\right) - l\left(\mathfrak{D}_m, [\mathbf{m}^{0}_{u},\hat{\mathbf{w}}^{0}_{v}]\right)\Big),
-\end{aligned}
 \]
 where~$[\hat{\mathbf{w}}_{u},\hat{\mathbf{w}}_{v}]$ is the~vector, which maximizes likelihood~\eqref{eq:sb:8},~$\hat{\mathbf{w}}^{0}_{v}$ is the~vector, which maximises the likelihood function~\eqref{eq:sb:8} with fixed~$\mathbf{m}^{0}_{u}$.
 	
 When~$H_0$ holds, the~likelihood ratio statistic asymptotically tends to the~$\chi^2(k)$ distribution. In~\cite{shieh2000} it is shown, that if the~alternative hypothesis~$H_1$ holds, the~likelihood ratio statistic asymptotically tends to the distribution~$\chi^2(k,\gamma)$, where~$\gamma$ is~a~non-centrality parameter, 
 \[
 \label{eq:sb:11}
-\begin{aligned}
 	\gamma = m\Delta^*, \quad \Delta^* = \mathsf{E}\left[2a^{-1}(\phi)\left\{\left(\theta - \theta^*\right)\nabla b(\theta) - b(\theta) + b(\theta^*)\right\}\right], 
-\end{aligned}
 \]
 where the~parameters~$\theta$ and~$\theta^*$ are calculated according to the~parameters~$[\mathbf{w}_{u}, \mathbf{w}_{v}]$ and~$[\mathbf{w}^{0}_{u}, \mathbf{w}^{*}_{v}]$ respectively. The parameters~$\mathbf{w}^{*}_{v}$ are given as the~solution of the~equation
 \[
@@ -264,9 +226,7 @@ where the~parameters~$\theta$ and~$\theta^*$ are calculated according to the~par
 Given~$\alpha$ and~$\beta$, obtain the~sufficient sample size
 \[
 \label{eq:sb:13}
-\begin{aligned}
 	m^* = \frac{\gamma^*}{\Delta^*}, \quad \gamma^*:\chi^2_{k, 1-\alpha} = \chi^2_{k, \beta}\left(\gamma\right), 
-\end{aligned}
 \]
 where~$\chi^2_{k, 1-\alpha}$,~$\chi^2_{k, \beta}\left(\gamma^*\right)$ are the~quantiles of the~distributions~$\chi^{2}_k$ and~$\chi^2_{k}\left(\gamma^*\right)$, and the parameter~$\gamma^*$ is~a~solution of equation~\eqref{eq:sb:13}.
 	
@@ -274,47 +234,35 @@ where~$\chi^2_{k, 1-\alpha}$,~$\chi^2_{k, \beta}\left(\gamma^*\right)$ are the~q
 Let the~likelihood of the~sample be similar to equations~\eqref{eq:sb:8} and~\eqref{eq:sb:8.1}. Consider the~linear regression task. Test the~hypothesis
 \[
 \label{eq:sb:15}
-\begin{aligned}
 	H_0: \mathsf{E}\mathbf{w}_{u} = \mathbf{m}_{u}^{0}, \quad H_1: \mathsf{E}\mathbf{w}_{u} \not=\mathbf{m}_{u}^{0}.
-\end{aligned}
 \]
 The Wald test for the~hypothesis is
 \[
 \label{eq:sb:16}
-\begin{aligned}
 	\left(\hat{\mathbf{w}}_{u} - \mathbf{m}_{u}^{0}\right)^{\mathsf{T}}\hat{\mathbf{V}}_{u}^{-1}\left(\hat{\mathbf{w}}_{u} - \mathbf{m}_{u}^{0}\right),
-\end{aligned}
 \]
-where~$[\hat{\mathbf{w}}_{u},\hat{\mathbf{w}}_{v}]$ are the parameters. This vector maximizes the likelihood function~\eqref{eq:sb:8}, and~$\hat{\mathbf{V}}_u$ is~a~part of the covariance matrix~$\hat{\mathbf{V}}=\mathbf{I}^{-1}\bigr(\mathfrak{D}_m, [\hat{\mathbf{w}}_{u},\hat{\mathbf{w}}_{v}]\bigr)$, corresponding to~$\hat{\mathbf{w}}_{u}$.
+where~$[\hat{\mathbf{w}}_{u},\hat{\mathbf{w}}_{v}]$ are the parameters. This vector maximises the likelihood function~\eqref{eq:sb:8}, and~$\hat{\mathbf{V}}_u$ is~a~part of the covariance matrix~$\hat{\mathbf{V}}=\mathbf{I}^{-1}\bigr(\mathfrak{D}_m, [\hat{\mathbf{w}}_{u},\hat{\mathbf{w}}_{v}]\bigr)$, corresponding to~$\hat{\mathbf{w}}_{u}$.
 
 If~$H_0$ holds, the~Wald test statistic asymptotically tends to the~$\chi^2$ distribution. The paper~\cite{shieh2005} shows that in the~case~of~$H_1$, the~Wald test statistic asymptotically tends to the~$\chi^2(k,\gamma)$ distribution, where~$\gamma$ is~the~non-centrality parameter,
 \[
 \label{eq:sb:17}
-\begin{aligned}
 	\gamma = m\delta, \quad \delta = \frac{1}{m}\left(\hat{\mathbf{w}}_{u} - \mathbf{m}_{u}^{0}\right)^{\mathsf{T}}\hat{\mathbf{V}}_u^{-1}\left(\hat{\mathbf{w}}_{u} - \mathbf{m}_{u}^{0}\right).
-\end{aligned}
 \]
 
 Using some given significance level~$\alpha$ and the~probability of false negative error~$\beta$, define the~sufficient sample size as
 \[
 \label{eq:sb:18}
-\begin{aligned}
 	m^* = \frac{\gamma^*}{\delta}, \quad \gamma^*:\chi^2_{k, 1-\alpha^{*}} = \chi^2_{k, \beta}\left(\gamma\right),
-\end{aligned}
 \]
 where the parameter~$\gamma^*$ is~a~solution of equation~\eqref{eq:sb:18} and $\chi^2_{k, 1-\alpha^*}$,~$\chi^2_{k, \beta}\left(\gamma^*\right)$ are quantiles of distributions. The correction ~$\alpha^*$ on the~significance levels is
 \[
 \label{eq:sb:19}
-\begin{aligned}
 	\alpha^* = \mathsf{P}\left\{\bm{\xi} | \bm{\xi}^{\mathsf{T}}\mathbf{I}\left(\mathfrak{D}_m, \left[\mathbf{m}_{u}^{0}, \mathbf{w}^{*}_v\right]\right)\bm{\xi} > \chi^2_{k,1 - \alpha}\right\},
-\end{aligned}
 \]
 where~$\mathbf{w}^{*}_v$ is~a~solution of the~equation:
 \[
 \label{eq:sb:20}
-\begin{aligned}
 	\lim_{m\to\infty}m^{-1}\mathsf{E}\left(\frac{\partial l\left(\mathfrak{D}_m, \left[ \mathbf{m}_{u}^{0}, \mathbf{w}_{v}\right]\right)}{\partial \mathbf{w}_{v}}\right) = 0.
-\end{aligned}
 \]
 
 \section{Heuristic-based sample size estimation}
@@ -324,25 +272,19 @@ The heuristic-based method uses widely-used heuristics like bootstrap, cross-val
 Define the~over-fitting criterion as
 \[
 \label{eq:hb:5}
-\begin{aligned}
 	\ln\frac{L(\mathfrak{D}_{m_{\text{train}}}, \hat{\mathbf{w}})}{L(\mathfrak{D}_{m_{\text{test}}}, \hat{\mathbf{w}})}, \quad \frac{m_{\text{test}}}{m_{\text{train}}} = \text{const} \leq 0.5, \quad m_{\text{test}} + m_{\text{train}} = m,
-\end{aligned}
 \]
 where~$m_{\text{test}}$ and~$m_{\text{train}}$ is~the~size of test and train subsets of~the~sample~set~$\mathfrak{D}_{m}$.
 Assume that 
 \[
 \label{eq:hb:6}
-\begin{aligned}
 	\lim_{m\to \infty}\ln\frac{L(\mathfrak{D}_{m_{\text{train}}}, \hat{\mathbf{w}})}{L(\mathfrak{D}_{m_{\text{test}}}, \hat{\mathbf{w}})} \to 0.
-\end{aligned}
 \]
 
 The sufficient sample size~$m^*$ is~a~sample size, such that for all~$m \geq m^*$ the~following condition is satisfied:
 \[
 \label{eq:hb:7}
-\begin{aligned}
 	\mathsf{E}_{\mathfrak{D}_{m}}\ln\frac{L(\mathfrak{D}_{m_{\text{train}}}, \hat{\mathbf{w}})}{L(\mathfrak{D}_{m_{\text{test}}}, \hat{\mathbf{w}})} \leq \varepsilon,
-\end{aligned}
 \]
 where~$\varepsilon$ is an arbitrary parameter.
 
@@ -354,9 +296,7 @@ This method assumes that the~lengths of the~bootstrap quantile confident interva
 with significance level of~$\alpha$ using bootstrap for every parameter of the~model. The sufficient sample size~$m^*$ is~a~sample size, such that for all~$m \geq m^*$ the~following condition is satisfied:
 \[
 \label{eq:hb:8}
-\begin{aligned}
 	\max_i\left(b^m_i - a^m_i\right) \leq l,
-\end{aligned}
 \]
 where~$l$ is an arbitrary parameter. This is a coordinate-wise method. So, to increase the~prediction accuracy one has to~increase the~sample size significantly.
  
@@ -368,9 +308,7 @@ The Bayesian methods for sample size estimation are based on restrictions of mod
 Estimate the sample size~$m^*$ such that for all~$m \geq m^*$ the~following condition is satisfied:
 \[
 \label{eq:bs:1}
-\begin{aligned}
 	\mathsf{E}_{\mathfrak{D}_m}\mathsf{D}\left[\hat{\mathbf{w}}|\mathfrak{D}_m\right] \leq l,
-\end{aligned}
 \]
 where~$l$ is some given parameter, which quantifies the~uncertainty of parameter estimation.
 
@@ -378,51 +316,39 @@ where~$l$ is some given parameter, which quantifies the~uncertainty of parameter
 Denote by~$A\left(\mathfrak{D}_{m}\right) \subset \mathbb{R}^n$ be some set of the~model parameters~$\mathbf{w}$:
 \[
 \label{eq:bs:2}
-\begin{aligned}
 	A\left(\mathfrak{D}_{m}\right) = \left\{\mathbf{w}:||\mathbf{w} - \hat{\mathbf{w}}||\leq l\right\},
-\end{aligned}
 \]
 where~$l$ is some fixed ball radius. Estimate the sample size~$m^*$ such that for all~$m \geq m^*$ the~following condition is satisfied:
 \[
 \label{eq:bs:3}
-\begin{aligned}
 	\mathsf{E}_{\mathfrak{D}_m}\mathsf{P}\left\{\mathbf{w} \in A\left(\mathfrak{D}_m\right)\right\} \geq 1-\alpha,
-\end{aligned}
 \]
 where~$\alpha$ is some small value.
 	
 \paragraph{Average length criterion.}
-Use the~coverage of the~model parameters~$\mathbf{w}$ and define~$A\left(\mathfrak{D}_{m}\right)$ as
+Use the~coverage of~parameters~$\mathbf{w}$ and define~$A\left(\mathfrak{D}_{m}\right)$ as
 \[
 \label{eq:bs:4}
-\begin{aligned}
 	\mathsf{P}\bigl(A\left(\mathfrak{D}_{m}\right)\bigr) = 1- \alpha.
-\end{aligned}
 \]
 The average length criterion estimates~$m^*$ as in~\eqref{eq:bs:3}, where~$m^*$ is~a~sample size such that for all~$m \geq m^*$ the~following condition is satisfied:
 	
 \[
 \label{eq:bs:5}
-\begin{aligned}
 	\mathsf{E}_{\mathfrak{D}_m}r_m\leq l,
-\end{aligned}
 \]
 where~$r_m$ is the~radius~$A\left(\mathfrak{D}_{m}\right)$.
 
 \subsection{Utility maximization}
-Methods of this class maximize the~expectation of some utility function~$u\left(\mathfrak{D}_{m}, \mathbf{w}\right)$ optimizing the~sample size,
+Methods of this class maximize the~expectation of some utility function~$u\left(\mathfrak{D}_{m}, \mathbf{w}\right)$ estimating
 \[
 \label{eq:bs:6}
-\begin{aligned}
 	m^* = \argmax_{m} \mathsf{E}_{\mathfrak{D}_m}\int_{\mathbf{w}\in\mathbb{R}^{n}}u\left(\mathfrak{D}_m, \mathbf{w}\right)p(\mathbf{w}|\mathfrak{D}_m)d\mathbf{w}.
-\end{aligned}
 \]
 The utility function~$u\left(\mathfrak{D}_{m}, \mathbf{w}\right)$ has the~form
 \[
 \label{eq:bs:7}
-\begin{aligned}
 	u\left(\mathfrak{D}_m, \mathbf{w}\right) = l\left(\mathfrak{D}_m, \mathbf{w}\right) - cm,
-\end{aligned}
 \]
  where~$c$ is~a~given penalty constant for each element in the~sample set~$\mathfrak{D}_m$. 
 	 
@@ -430,31 +356,24 @@ The utility function~$u\left(\mathfrak{D}_{m}, \mathbf{w}\right)$ has the~form
 Call the~index sets~$\mathcal{B}_1,\mathcal{B}_2 \subset \{1,\dots,m\}$ in the~neighbourhood with symmetric difference
 \[
 \label{eq:bs:8}
-\begin{aligned}
 	\left|\mathcal{B}_1 \triangle \mathcal{B}_2\right| = 1
-\end{aligned}
 \]
 so that~$\mathcal{B}_2$ can be transformed into~$\mathcal{B}_1$ by removal, replacement or addition of one element from sample set~$\mathfrak{D}_m$. The paper~\cite{motrenko2014} shows that if the~size of the~sample set~$\mathfrak{D}_{|\mathcal{B}_1|}$ is large enough, than the~parameters~$\hat{\mathbf{w}}_1$, which are optimised with~$\mathfrak{D}_{|\mathcal{B}_1|}$ must be in the~neighbourhood of the~parameters~$\hat{\mathbf{w}}_2$, which are optimised with~$\mathfrak{D}_{|\mathcal{B}_2|}$. The parameters~$\hat{\mathbf{w}}_1, \hat{\mathbf{w}}_2$ are optimised according to maximum likelihood function~\eqref{eq:ps:4} for the~given sample sets~$\mathfrak{D}_{|\mathcal{B}_1|}, \mathfrak{D}_{|\mathcal{B}_2|}$.
 	 
 Use Kullback-Leibler divergence for distributions of the~parameters, optimised with~$\mathfrak{D}_{|\mathcal{B}_1|}$ and~$\mathfrak{D}_{|\mathcal{B}_2|}$:
 \[
 \label{eq:bs:9}
-\begin{aligned}
 	D_\text{KL}\left(p_1 || p_2\right) = \int_{\mathbf{w}\in\mathbb{R}^{n}}p_1(\mathbf{w})\log\frac{p_1(\mathbf{w})}{p_2(\mathbf{w})}d\mathbf{w},
-\end{aligned}
 \]
 where~$p_1$ and~$p_2$ are posterior probabilities of vector of parameters~$\mathbf{w}$ calculated on subsets~$\mathfrak{D}_{|\mathcal{B}_1|}$ and~$\mathfrak{D}_{|\mathcal{B}_2|}$, holding~\eqref{eq:bs:8}.
 Estimate the sample size~$m^*$ as the~minimum value such that for all subsets~$\mathfrak{D}_{|\mathcal{B}_1|}$ with size~$|\mathcal{B}_1|\geq m^*$ the~following condition is satisfied:
 \[
 \label{eq:bs:10}
-\begin{aligned}
 	\mathsf{E}_{\mathfrak{D}_{|\mathcal{B}_2|}}D_\text{KL}\left(p_1 || p_2\right) \leq \varepsilon,
-\end{aligned}
 \]
 where~$\varepsilon$ is some fixed value. The equation~\eqref{eq:bs:10} assumes that the~difference in one element from~$\mathfrak{D}_m$ should not significantly affect the~distribution of parameters~$\mathbf{w}$. 
 
-\begin{table}[!htp]
-\centering
+\begin{table}[!hbp]
 \caption{ Descriptive statistics of~the sample sets}
 \label{table20}
 \begin{tabular}{l|l|c|c}
@@ -471,7 +390,6 @@ where~$\varepsilon$ is some fixed value. The equation~\eqref{eq:bs:10} assumes t
 	 
 \section{Computational experiment}
 \begin{table}[!htp]
-\centering
 \caption{Experimental estimation of sample size  for various sample sets}
 \label{table2}
 \begin{tabular}{l|c|c|c|c|c}
@@ -494,9 +412,7 @@ The experiment analyses  properties of the~sample size estimation methods. It co
 This part of computation experiment shows how different methods work on various sample sets. It uses Boston Housing~\cite{boston}, Diabetes, Forest Fires, Servo~\cite{servo}, and NBA.
 The result is presented in Table~\ref{table2}. The symbol ``--'' here means that there is not enough samples for the~prediction.
 
-\subsection{Sample size estimation for various sample sets}
-\begin{table}[h!]
-\begin{center}
+\begin{table}[h!bp]
 \caption{List of parameters of the~sample size estimation methods}
 \label{table3}
 \begin{tabular}{l|c|c|c|c|c}
@@ -522,12 +438,10 @@ ALC 										& -- & 0.5	& -- & 0.05& --\\
 Utility function 					& -- & -- 	& 0.005& -- & --\\
 \hline
 \end{tabular}
-\end{center}
 \end{table}
 
-
+\subsection{Sample size estimation for various sample sets}
 Each method use a~whole-size sample set at the~start. Table~\ref{table3} shows the parameters of each method. Since~the Lagrange, Likelihood Ration and Wald tests are asymptotically equivalent, their~parameters were equal. The parameters of the~Average Coverage and Average Length methods were equal, too.
-
 
 \begin{figure}[h!]
 % \subfloat[Cross-validation ]{\includegraphics[width=0.49\textwidth]{cross.pdf}}
@@ -537,26 +451,23 @@ Each method use a~whole-size sample set at the~start. Table~\ref{table3} shows t
 % \subfloat[Bootstrap ]{\includegraphics[width=0.49\textwidth]{bootstrap.pdf}}
 % \subfloat[KL method ]{\includegraphics[width=0.49\textwidth]{kl.pdf}}\\
 % \subfloat[Utility function ]{\includegraphics[width=0.49\textwidth]{maxu.pdf}}
-\centering{\includegraphics[width=1.0\textwidth]{fig1}}
-\caption{Methods main scalar functions behaviour dependent on available sample size.}
+\includegraphics[width=1.0\textwidth]{fig1}
+\caption{Dependency of the methods on the available sample size.}
 \label{fig1}
 \end{figure}
 
 \subsection{Dependency between available sample sets and prediction of their sizes}
-
 This dependency analysis uses the~Boston Housing sample set~\cite{boston}. Given the whole sample set, fix some~$m$ and randomly sample series of bootstrap subsets of size~$m$ from the~initial set. For different values of~$m$ compute values~$m^*$, average them and calculate standard deviation. 
  
-\begin{figure}[!hbp]
-\centering{\includegraphics[width=0.85\textwidth]{fig2}}%{graphs.png}}
- \caption{Methods behaviour depending on the~available sample size.}
+\begin{figure}[!htp]
+\centering{\includegraphics[width=0.85\textwidth]{graphs}}
+ \caption{Estimated sample size~$m^*$ versus the available sample size~$m$ for each method.}
 \label{fig2}
 \end{figure}
 
 Figure~\ref{fig1} shows how the~static value of each method depends on sample size~$m$. %The thresholds for each method are set by the authors.  
 Figure~\ref{fig1} demonstrates adequacy of different definitions of sample size sufficiency. Every presented function is monotonous and asymptotically tends to some~constant. Figure~\ref{fig2} shows estimated sample size~$m^*$ for  different sizes~$m$ of the sample set. It shows how methods differ in variance  of estimated values~$m^*$ and how methods behave in case of small size of the sample set. All methods converge and the~result does not depends on the sample size starting from some value of~$m$. 
 
-
- 
 The small value of the variance of~$m^*$ could be interpreted as stability of the~methods. 
 %output with little dependency on a~particular subset of some size. 
 Some of the~methods are not able to estimate sufficient sample size unless a sample of  such size is provided. It means that they are useless for prediction of~$m^*$. However, they can be used for retrospective analysis of conducted experiments.
@@ -587,50 +498,51 @@ This paper contains results of the project Mathematical methods of intelligent b
 
 \begin{thebibliography}{}
 	\bibitem{demidenko2007}
-	E. Demidenko, ``Sample size determination for logistic regression revisited,'' Statist. Med. 26, 3385--3397 (2007).
+	E. Demidenko, ``Sample size determination for logistic regression revisited,'' Statist. Med. \textbf{26}, 3385--3397 (2007).
 	
 	\bibitem{self1988}
-	S. Self and R. Mauritsen, ``Power/sample size calculations for generalized linear models,'' Biometrics 44, 79--86 (1988).
+	S. Self and R. Mauritsen, ``Power/sample size calculations for generalized linear models,'' Biometrics \textbf{44}, 79--86 (1988).
 	
 	\bibitem{self1992}
-	S. Self, R. Mauritsen and J. Ohara, ``Power calculations for likelihood ratio tests in generalized linear models,'' Biometrics 48, 31--39 (1992).
+	S. Self, R. Mauritsen and J. Ohara, ``Power calculations for likelihood ratio tests in generalized linear models,'' Biometrics \textbf{48}, 31--39 (1992).
 	
 	\bibitem{shieh2000}
-	G. Shieh, ``On power and sample size calculations for likelihood ratio tests in generalized linear models,'' Biometrics 56, 1192--1196 (2000).
+	G. Shieh, ``On power and sample size calculations for likelihood ratio tests in generalized linear models,'' Biometrics \textbf{56}, 1192--1196 (2000).
 	
 	\bibitem{kloek1975}
-	T. Kloek, ``Note on a~large-sample result in specification analysis,'' Econometrica 43, 933--936 (1975).
+	T. Kloek, ``Note on a~large-sample result in specification analysis,'' Econometrica \textbf{43}, 933--936 (1975).
 	
 	\bibitem{shieh2005}
-	G. Shieh, ``On power and sample size calculations for Wald tests in generalized linear models,'' Journal of Statistical Planning and Inference 128, 43--59 (2005).
+	G. Shieh, ``On power and sample size calculations for Wald tests in generalized linear models,'' Journal of Statistical Planning and Inference \textbf{128}, 43--59 (2005).
 
 	\bibitem{motrenko2014}
-	A. Motrenko, V. Strijov and G. Weber, ``Sample size determination for logistic regression,'' Journal of Computational and Applied Mathematics 255, 743--752 (2014).
+	A. Motrenko, V. Strijov and G. Weber, ``Sample size determination for logis
+	
+	ression,'' Journal of Computational and Applied Mathematics \textbf{255}, 743--752 (2014).
 	
 	\bibitem{qumsiyeh2013}
-	M. Qumsiyeh, ``Using the~bootstrap for estimation the~sample size in statistical experiments,'' Journal of modern applied statistical methods 8, 305--321 (2013).
+	M. Qumsiyeh, ``Using the~bootstrap for estimation the~sample size in statistical experiments,'' Journal of modern applied statistical methods \textbf{8}, 305--321 (2013).
 	
 	\bibitem{lindley1997}
-	D. Lindley, ``The choice of sample size,'' Statistician 46, 129--138 (1997).
+	D. Lindley, ``The choice of sample size,'' Statistician \textbf{46}, 129--138 (1997).
 	
 	\bibitem{rubin1998}
-	D. Rubin and H. Stern, ``Sample size determination using posterior predictive distributions,'' Sankhya: The Indian Journal of Statistics Special Issue on Bayesian Analysis 60, 161--175 (1998).
+	D. Rubin and H. Stern, ``Sample size determination using posterior predictive distributions,'' Sankhya: The Indian Journal of Statistics Special Issue on Bayesian Analysis \textbf{60}, 161--175 (1998).
 
 	\bibitem{wang2002}
-	F. Wang and A. Gelfand, ``A Simulation-based Approach to Bayesian Sample Size Determination for Performance under a~Given Model and for Separating Models,'' Statistical Science 17, 193--208 (2002).
+	F. Wang and A. Gelfand, ``A Simulation-based Approach to Bayesian Sample Size Determination for Performance under a~Given Model and for Separating Models,'' Statistical Science \textbf{17}, 193--208 (2002).
 	
 	\bibitem{joseph1997}
-	L. Joseph, R. Berger and P. Be'lisle, ``Bayesian and mixed bayesian likelihood criteria for sample size determination,'' Statistician 16, 769--781 (1995).
+	L. Joseph, R. Berger and P. Be'lisle, ``Bayesian and mixed bayesian likelihood criteria for sample size determination,'' Statistician \textbf{16}, 769--781 (1995).
 	
 	\bibitem{joseph1995}
-	L. Joseph, D. Wolfson and R. Berger, ``Sample size calculations for binomial proportions via highest posterior density intervals,'' Statistical Medicine 44, 143--154 (1997).
+	L. Joseph, D. Wolfson and R. Berger, ``Sample size calculations for binomial proportions via highest posterior density intervals,'' Statistical Medicine \textbf{44}, 143--154 (1997).
 	
 	\bibitem{servo}
 	J. Quinlan, ``Learning with continuous classes,'' in \emph{Proc. 5th Australian Joint Conference on AI} (1992), pp.~343--348.
 	
 	\bibitem{boston}
-	D. Harrison and D. Rubinfeld, ``Hedonic prices and the~demand for clean air,'' Economics and Management 5, 81--102 (1978).
+	D. Harrison and D. Rubinfeld, ``Hedonic prices and the~demand for clean air,'' Economics and Management \textbf{5}, 81--102 (1978).
 
 \end{thebibliography}
 \end{document}
-
