@@ -15,7 +15,7 @@ centertags]%
 {revtex4}
 \usepackage{ljm}
 %\setcounter{page}{3}
-%\usepackage{subfig}
+\usepackage[caption=false]{subfig}
 \usepackage{amssymb}
 \usepackage{bm}
 \usepackage{amsmath}
@@ -444,14 +444,13 @@ Utility function 					& -- & -- 	& 0.005& -- & --\\
 Each method use a~whole-size sample set at the~start. Table~\ref{table3} shows the parameters of each method. Since~the Lagrange, Likelihood Ration and Wald tests are asymptotically equivalent, their~parameters were equal. The parameters of the~Average Coverage and Average Length methods were equal, too.
 
 \begin{figure}[h!]
-% \subfloat[Cross-validation ]{\includegraphics[width=0.49\textwidth]{cross.pdf}}
-% \subfloat[APVC ]{\includegraphics[width=0.49\textwidth]{apvc.pdf}}\\
-% \subfloat[ACC ]{\includegraphics[width=0.49\textwidth]{acc.pdf}}
-% \subfloat[ALC ]{\includegraphics[width=0.49\textwidth]{alc.pdf}}\\
-% \subfloat[Bootstrap ]{\includegraphics[width=0.49\textwidth]{bootstrap.pdf}}
-% \subfloat[KL method ]{\includegraphics[width=0.49\textwidth]{kl.pdf}}\\
-% \subfloat[Utility function ]{\includegraphics[width=0.49\textwidth]{maxu.pdf}}
-\includegraphics[width=1.0\textwidth]{fig1}
+\subfloat[Cross-validation ]{\includegraphics[width=0.49\textwidth]{cross}}
+\subfloat[APVC]{\includegraphics[width=0.49\textwidth]{apvc}}\\
+\subfloat[ACC]{\includegraphics[width=0.49\textwidth]{acc}}
+\subfloat[ALC]{\includegraphics[width=0.49\textwidth]{alc}}\\
+\subfloat[Bootstrap]{\includegraphics[width=0.49\textwidth]{bootstrap}}
+\subfloat[Utility function]{\includegraphics[width=0.49\textwidth]{maxu}}
+% \includegraphics[width=1.0\textwidth]{fig1}
 \caption{Dependency of the methods on the available sample size.}
 \label{fig1}
 \end{figure}
