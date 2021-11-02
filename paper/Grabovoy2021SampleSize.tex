@@ -1,6 +1,6 @@
 %%
-%% ****** Generated 18.03.21 by LJM TeX-constructor******
-%%Sat 25 september
+%% ****** ljmsamp.tex 13.06.2018 ******
+%%
 \documentclass[
 11pt,%
 tightenlines,%
@@ -14,16 +14,7 @@ noshowpacs,%
 centertags]%
 {revtex4}
 \usepackage{ljm}
-%\setcounter{page}{3}
 \usepackage{subfigure}
-\usepackage{amssymb}
-\usepackage{bm}
-\usepackage{amsmath}
-\usepackage{autonum}
-\usepackage{url}
-\DeclareMathOperator*{\argmax}{arg\,max}
-\DeclareMathOperator*{\argmin}{arg\,min}
-%\newcommand*{\No}{No.}
 
 \begin{document}
 \titlerunning{Sample size estimation} % for running heads
@@ -137,7 +128,7 @@ is called \emph{sufficient}.
     &\cite{joseph1995, joseph1997}\\
 \hline
     Utility maximization &
-    Sufficient sample size~$m^*$: $m^* = \argmax_{m} \mathsf{E}_{\mathfrak{D}_m}\int_{\mathbf{w}}u\left(\mathfrak{D}_m, \mathbf{w}\right)p(\mathbf{w}|\mathfrak{D}_m)d\mathbf{w}$, where utility function~$u\left(\mathfrak{D}_m, \mathbf{w}\right)$ is given as~\eqref{eq:bs:7}.
+    Sufficient sample size~$m^*$: $m^* = \arg\max_{m} \mathsf{E}_{\mathfrak{D}_m}\int_{\mathbf{w}}u\left(\mathfrak{D}_m, \mathbf{w}\right)p(\mathbf{w}|\mathfrak{D}_m)d\mathbf{w}$, where utility function~$u\left(\mathfrak{D}_m, \mathbf{w}\right)$ is given as~\eqref{eq:bs:7}.
     &\cite{lindley1997}\\
 \hline
 \end{tabular}
@@ -228,19 +219,19 @@ the~target value~$y$, given the~feature vector~$\mathbf{x}$ and
 the~parameters~$\mathbf{w}\in \mathbb{R}^{n}$.
 
 Define the~likelihood function and logarithmic likelihood function of the~sample set~$\mathfrak{D}_{m}$:
-\[
+\begin{equation}
 \label{eq:ps:4}
 \begin{aligned}
     L\left(\mathfrak{D}_{m}, \mathbf{w}\right) = \prod_{i=1}^{m} p\left(y_{i}|\mathbf{x}_{i},
     \mathbf{w}\right),\quad l\left(\mathfrak{D}_{m}, \mathbf{w}\right) = \sum_{i=1}^{m} \log p\left(y_i|\mathbf{x}_{i}, \mathbf{w}\right).
 \end{aligned}
-\]
+\end{equation}
 
 Estimate parameters~$\mathbf{w}$ using likelihood:
 \[
 \label{eq:ps:5}
 \begin{aligned}
-    \hat{\mathbf{w}} = \argmax_{\mathbf{w}\in\mathbb{R}^{n}}L\left(\mathfrak{D}_{m}, \mathbf{w}\right).
+    \hat{\mathbf{w}} = \arg\max_{\mathbf{w}\in\mathbb{R}^{n}}L\left(\mathfrak{D}_{m}, \mathbf{w}\right).
 \end{aligned}
 \]
 
@@ -311,12 +302,12 @@ Denote~$\bm{\xi}_1 = \bm{\xi}$ and~$\bm{\Sigma}_1 = \bm{\Sigma}$.
 The alternative method to estimate~$\gamma$ involves the~conditions
 on the~significance  level~$\alpha$ and the~probability of true
 negative error~$\beta$:
-\[
+\begin{equation}
 \label{eq:sb:6}
 \begin{aligned}
     \gamma^*: \chi^2_{k, 1-\alpha} = \chi^2_{k, \beta}\left(\gamma\right),
 \end{aligned}
-\]
+\end{equation}
 where~$\gamma^*$ is~a~solution of equation~\eqref{eq:sb:6}.
 Using~\eqref{eq:sb:5} and~\eqref{eq:sb:6} get the~minimum sample size
 \[
@@ -329,19 +320,19 @@ This is~a~sufficient minimum sample size to tell~$\mathsf{E}\mathbf{w}_{u}$ from
 
 \subsection{Likelihood ratio test}\label{likelihood_test}
 Let the~likelihood of the~sample set be
-\[
+\begin{equation}
 \label{eq:sb:8}
 \begin{aligned}
     p(y|\mathbf{x},\mathbf{w}) = \exp\left(\frac{y\theta- b(\theta)}{a(\phi)} + c\left(y, \phi\right)\right),
 \end{aligned}
-\]
+\end{equation}
 where~$\theta, \phi$ are parameters,  defined by the link functions
-\[
+\begin{equation}
 \label{eq:sb:8.1}
 \begin{aligned}
 \theta=\theta\bigr(\mathbf{x},\mathbf{w}\bigr),\quad \phi=\phi\bigr(\mathbf{x},\mathbf{w}\bigr).
 \end{aligned}
-\]
+\end{equation}
 The functions~$a, b, c$ are given. In~linear regression test the~hypothesis
 \[
 \label{eq:sb:9}
@@ -350,7 +341,7 @@ The functions~$a, b, c$ are given. In~linear regression test the~hypothesis
 \end{aligned}
 \]
 Introduce the~logarithm of likelihood ratio statistic
- \[
+\[
 \label{eq:sb:10}
 \begin{aligned}
     2\Big(l\left(\mathfrak{D}_m, [\hat{\mathbf{w}}_{u},\hat{\mathbf{w}}_{v}]\right) - l\left(\mathfrak{D}_m, [\mathbf{m}^{0}_{u},\hat{\mathbf{w}}^{0}_{v}]\right)\Big),
@@ -387,12 +378,12 @@ the~equation
 \]
 
 Given~$\alpha$ and~$\beta$, obtain the~sufficient sample size
-\[
+\begin{equation}
 \label{eq:sb:13}
 \begin{aligned}
     m^* = \frac{\gamma^*}{\Delta^*}, \quad \gamma^*:\chi^2_{k, 1-\alpha} = \chi^2_{k, \beta}\left(\gamma\right),
 \end{aligned}
-\]
+\end{equation}
 where~$\chi^2_{k, 1-\alpha}$,~$\chi^2_{k,
 \beta}\left(\gamma^*\right)$ are the~quantiles of
 the~distributions~$\chi^{2}_k$
@@ -438,12 +429,12 @@ is~the~non-centrality parameter,
 
 Using some given significance level~$\alpha$ and the~probability of
 false  negative error~$\beta$, define the~sufficient sample size as
-\[
+\begin{equation}
 \label{eq:sb:18}
 \begin{aligned}
     m^* = \frac{\gamma^*}{\delta}, \quad \gamma^*:\chi^2_{k, 1-\alpha^{*}} = \chi^2_{k, \beta}\left(\gamma\right),
 \end{aligned}
-\]
+\end{equation}
 where the parameter~$\gamma^*$ is~a~solution of
 equation~\eqref{eq:sb:18}  and $\chi^2_{k, 1-\alpha^*}$,~$\chi^2_{k,
 \beta}\left(\gamma^*\right)$ are quantiles of distributions. The
@@ -455,12 +446,12 @@ correction ~$\alpha^*$ on the~significance levels is
 \end{aligned}
 \]
 where~$\mathbf{w}^{*}_v$ is~a~solution of the~equation:
-\[
+\begin{equation}
 \label{eq:sb:20}
 \begin{aligned}
     \lim_{m\to\infty}m^{-1}\mathsf{E}\left(\frac{\partial l\left(\mathfrak{D}_m, \left[ \mathbf{m}_{u}^{0}, \mathbf{w}_{v}\right]\right)}{\partial \mathbf{w}_{v}}\right) = 0.
 \end{aligned}
-\]
+\end{equation}
 
 \section{Heuristic-based sample size estimation}
 The heuristic-based method uses widely-used heuristics like
@@ -468,12 +459,12 @@ bootstrap,  cross-validation and feature selection.
 
 \subsection{Cross-validation based method}
 Define the~over-fitting criterion as
-\[
+\begin{equation}
 \label{eq:hb:5}
 \begin{aligned}
     \ln\frac{L(\mathfrak{D}_{m_{\text{train}}}, \hat{\mathbf{w}})}{L(\mathfrak{D}_{m_{\text{test}}}, \hat{\mathbf{w}})}, \quad \frac{m_{\text{test}}}{m_{\text{train}}} = \text{const} \leq 0.5, \quad m_{\text{test}} + m_{\text{train}} = m,
 \end{aligned}
-\]
+\end{equation}
 where~$m_{\text{test}}$ and~$m_{\text{train}}$ is~the~size of test and train subsets of~the~sample~set~$\mathfrak{D}_{m}$.
 Assume that
 \[
@@ -524,7 +515,7 @@ is chosen such that this function must not exceed some threshold.
 
 \paragraph{Average posterior variance criterion.}
 Estimate the sample size~$m^*$ such that for all~$m \geq m^*$ the~following condition is satisfied:
-\[
+\[]
 \label{eq:bs:1}
 \begin{aligned}
     \mathsf{E}_{\mathfrak{D}_m}\mathsf{D}\left[\hat{\mathbf{w}}|\mathfrak{D}_m\right] \leq l,
@@ -541,12 +532,12 @@ Denote by~$A\left(\mathfrak{D}_{m}\right) \subset \mathbb{R}^n$ be some set of t
 \end{aligned}
 \]
 where~$l$ is some fixed ball radius. Estimate the sample size~$m^*$ such that for all~$m \geq m^*$ the~following condition is satisfied:
-\[
+\begin{equation}
 \label{eq:bs:3}
 \begin{aligned}
     \mathsf{E}_{\mathfrak{D}_m}\mathsf{P}\left\{\mathbf{w} \in A\left(\mathfrak{D}_m\right)\right\} \geq 1-\alpha,
 \end{aligned}
-\]
+\end{equation}
 where~$\alpha$ is some small value.
 
 \paragraph{Average length criterion.}
@@ -561,12 +552,12 @@ The average length criterion estimates~$m^*$ as in~\eqref{eq:bs:3},
 where~$m^*$ is~a~sample size such that for all~$m \geq m^*$
 the~following condition is satisfied:
 
-\[
+\begin{equation}
 \label{eq:bs:5}
 \begin{aligned}
     \mathsf{E}_{\mathfrak{D}_m}r_m\leq l,
 \end{aligned}
-\]
+\end{equation}
 where~$r_m$ is the~radius~$A\left(\mathfrak{D}_{m}\right)$.
 
 \subsection{Utility maximization}
@@ -574,27 +565,27 @@ Methods of this class maximize the~expectation of some utility function~$u\left(
 \[
 \label{eq:bs:6}
 \begin{aligned}
-    m^* = \argmax_{m} \mathsf{E}_{\mathfrak{D}_m}\int_{\mathbf{w}\in\mathbb{R}^{n}}u\left(\mathfrak{D}_m, \mathbf{w}\right)p(\mathbf{w}|\mathfrak{D}_m)d\mathbf{w}.
+    m^* = \arg\max_{m} \mathsf{E}_{\mathfrak{D}_m}\int_{\mathbf{w}\in\mathbb{R}^{n}}u\left(\mathfrak{D}_m, \mathbf{w}\right)p(\mathbf{w}|\mathfrak{D}_m)d\mathbf{w}.
 \end{aligned}
 \]
 The utility function~$u\left(\mathfrak{D}_{m}, \mathbf{w}\right)$ has the~form
-\[
+\begin{equation}
 \label{eq:bs:7}
 \begin{aligned}
     u\left(\mathfrak{D}_m, \mathbf{w}\right) = l\left(\mathfrak{D}_m, \mathbf{w}\right) - cm,
 \end{aligned}
-\]
+\end{equation}
  where~$c$ is~a~given penalty constant for each element in the~sample set~$\mathfrak{D}_m$.
 
 \subsection{Kullback--Leibler divergence}
 Call the~index sets~$\mathcal{B}_1,\mathcal{B}_2  \subset
 \{1,\dots,m\}$ in the~neighbourhood with symmetric difference
-\[
+\begin{equation}
 \label{eq:bs:8}
 \begin{aligned}
     \left|\mathcal{B}_1 \triangle \mathcal{B}_2\right| = 1
 \end{aligned}
-\]
+\end{equation}
 so that~$\mathcal{B}_2$ can be transformed into~$\mathcal{B}_1$ by
 removal,  replacement or addition of one element from sample
 set~$\mathfrak{D}_m$. The paper~\cite{motrenko2014} shows that if
@@ -624,12 +615,12 @@ and~$\mathfrak{D}_{|\mathcal{B}_2|}$, holding~\eqref{eq:bs:8}.
 Estimate the sample size~$m^*$ as the~minimum value such that for
 all subsets~$\mathfrak{D}_{|\mathcal{B}_1|}$ with
 size~$|\mathcal{B}_1|\geq m^*$ the~following condition is satisfied:
-\[
+\begin{equation}
 \label{eq:bs:10}
 \begin{aligned}
     \mathsf{E}_{\mathfrak{D}_{|\mathcal{B}_2|}}D_\text{KL}\left(p_1 || p_2\right) \leq \varepsilon,
 \end{aligned}
-\]
+\end{equation}
 where~$\varepsilon$ is some fixed value. The
 equation~\eqref{eq:bs:10}  assumes that the~difference in one
 element from~$\mathfrak{D}_m$ should not significantly affect
@@ -777,10 +768,10 @@ prediction of sufficient sample size at early stages of modelling
 and for retrospective analysis. This package includes functions for
 sample size visualization like on Figures~\ref{fig1}~and~\ref{fig2}.
 The source code is available at
-\mbox{\url{https://github.com/andriygav/SampleSizeLib}}. The
+\mbox{\text{https://github.com/andriygav/SampleSizeLib}}. The
 computational experiment code and the sample sets from
 Table~\ref{table20} is available at
-\mbox{\url{https://github.com/ttgadaev/SampleSizeEstimation}}.
+\mbox{\text{https://github.com/ttgadaev/SampleSizeEstimation}}.
 
 \section{Conclusion}
 This work introduces nine various methods of sufficient sample size
